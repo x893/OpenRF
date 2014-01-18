@@ -1,27 +1,6 @@
-/*************************************************************************************
-**																					**
-**	atProcessor.c		Si1000 processor (8051 derivative							**
-** 																					**
-**************************************************************************************
-**																					**
-** Written By:	Steve Montgomery													**
-**				Digital Six Laboratories LLC										**
-** (c)2012 Digital Six Labs, All rights reserved									**
-**																					**
-**************************************************************************************/
-//
-// Revision History
-//
-// Revision		Date	Revisor		Description
-// ===================================================================================
-// ===================================================================================
-
-
-#include "..\..\..\SourceCode\Radio\Sx1231\radioapi.h"
+#include "..\..\..\SourceCode\Radio\SX1231\radioapi.h"
 #include "..\..\..\SourceCode\OpenRF_MAC\openrf_mac.h"
 #include "atProcessor.h"
-
-
 
 #define kATBufferSize 40
 tAtStates _atState;
@@ -36,48 +15,50 @@ U8 _bufCount = 0;
 U8 *_commands[32];
 
 void ProcessATCommand();
+
 tAtStates ATGetState()
 {
 	return _atState;
 }
+
 void ATInitialize(U8 *commands[], U8 commandCount, tCallback callback)
 {
 	U8 i;
 	_atState = kDisabled;
-	bufPtr=0;
+	bufPtr = 0;
 	_bufCount = 0;
-	foundA=0;
+	foundA = 0;
 	foundT = 0;
-	for(i=0;i<commandCount;i++)
-	{
+	for (i = 0; i < commandCount; i++)
 		_commands[i] = commands[i];
-	}
+
 	_commandCount = commandCount;
 	_commandCallback = callback;
 }
+
 void ATProcess()
 {
 	U8 ch;
 	switch(_atState)
 	{
 		case kDisabled:
-			if(BufferCountUART1()>0)
+			if (BufferCountUART1() > 0)
 			{
-				ch=Uart1PeekByte();
-				if(ch=='+')
+				ch = Uart1PeekByte();
+				if (ch=='+')
 				{
-					_atState=kPlus1;
+					_atState = kPlus1;
 					ReadCharUART1();
 				}
 			}
 			break;
 		case kPlus1:
-			if(BufferCountUART1()>0)
+			if (BufferCountUART1() > 0)
 			{
-				ch=Uart1PeekByte();
-				if(ch=='+')
+				ch = Uart1PeekByte();
+				if (ch == '+')
 				{
-					_atState=kPlus2;
+					_atState = kPlus2;
 					ReadCharUART1();
 				}
 				else
@@ -85,11 +66,11 @@ void ATProcess()
 			}
 			break;
 		case kPlus2:
-			if(BufferCountUART1()>0)
+			if (BufferCountUART1()>0)
 			{
 
 				ch=Uart1PeekByte();
-				if(ch=='+')
+				if (ch=='+')
 				{
 					ReadCharUART1();
 					_atState=kEnabled;
@@ -107,6 +88,7 @@ void ATProcess()
 			break;
 	}
 }
+
 U8 Compare(U8 *cmdToCompare)
 {
 	U8 bp=0;
@@ -115,7 +97,7 @@ U8 Compare(U8 *cmdToCompare)
 	// cycle through string and compare to buffer
 	while(*ptr!=0)
 	{
-		if(*ptr++ != atBuffer[bp++])
+		if (*ptr++ != atBuffer[bp++])
 			return 0;
 		cnt++;
 	}
@@ -123,6 +105,7 @@ U8 Compare(U8 *cmdToCompare)
 	bufPtr = bp;
 	return cnt;
 }
+
 void ProcessATCommand()
 {
 	U8 ch;
@@ -134,40 +117,37 @@ void ProcessATCommand()
 	while(count--)
 	{
 		ch=ReadCharUART1();
-		if(!foundA)
+		if (!foundA)
 		{
-			if(ch=='A')
-			{
-				foundA=1;
-			}
+			if (ch=='A')
+				foundA = 1;
 		}
-		else if(!foundT)
+		else if (!foundT)
 		{
-			if(ch=='T')
+			if (ch == 'T')
 			{
-				foundT=1;
-				bufPtr=0;
+				foundT = 1;
+				bufPtr = 0;
 			}
 		}
 		else
 		{
 
-			if((ch==0x0a) || (ch==0x0d))
+			if ((ch == 0x0A) || (ch == 0x0D))
 			{
 				_bufCount = bufPtr;
-				if(bufPtr==0)
+				if (bufPtr == 0)
 				{
 					// return the null command
-					_commandCallback(0xff);
-
+					_commandCallback(0xFF);
 				}
 				else
 				{
 					// in here, we have received the terminal character so we need to see if we can process the command.
-					for(i=0;i<_commandCount;i++)
+					for (i = 0; i < _commandCount; i++)
 					{
 						count = Compare(_commands[i]);
-						if(count)
+						if (count)
 						{
 							_commandCallback(i);
 							i=_commandCount;
@@ -177,25 +157,26 @@ void ProcessATCommand()
 				foundA = 0;
 				foundT = 0;
 				bufPtr = 0;
-				_bufCount=0;
+				_bufCount = 0;
 			}
 			else
 			{
 				// only put the char in the buffer if the buffer is not overflowing.  Otherwise, ignore it unless it is a terminal character
 
-				if(bufPtr<kATBufferSize)
+				if (bufPtr<kATBufferSize)
 					atBuffer[bufPtr++]=ch;
 			}
 		}
 	}
 }
+
 U8 IsATBufferNotEmpty()
 {
-	if(_bufCount>bufPtr)
+	if (_bufCount > bufPtr)
 		return 1;
-
 	return 0;
 }
+
 U8 GetATBufferCharacter()
 {
 	return atBuffer[bufPtr++];
@@ -206,5 +187,5 @@ void ExitCommandMode()
 }
 U8 IsInCommandMode()
 {
-	return _atState!=kDisabled;
+	return _atState != kDisabled;
 }

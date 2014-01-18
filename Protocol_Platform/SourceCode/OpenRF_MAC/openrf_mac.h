@@ -1,36 +1,14 @@
-/*************************************************************************************
-**																					**
-**	openrf_mac.h			OpenRF(tm) MAC Layer   									**
-** 																					**
-**************************************************************************************
-**																					**
-** Written By:	Steve Montgomery													**
-**				Digital Six Laboratories LLC										**
-** (c)2012 Digital Six Labs, All rights reserved									**
-**																					**
-**************************************************************************************/
-//
-// Revision History
-//
-// Revision		Date	Revisor		Description
-// ===================================================================================
-// ===================================================================================
-/*! \addtogroup OpenRF OpenRF MAC Layer
- *
- * \ingroup OpenRF_MAC
- * @{
- * \details This is the OpenRF MAC API.
- *
- */
 #ifndef OPENRF_HEADER
 #define OPENRF_HEADER
+
 #ifdef RADIO_SI1000
-#include "..\Radio\Si1000\radioapi.h"
+	#include "..\Radio\Si1000\radioapi.h"
 #endif
 
 #ifdef RADIO_SX1231
-#include "..\Radio\SX1231\radioapi.h"
+	#include "..\Radio\SX1231\radioapi.h"
 #endif
+
 #define kMaxMessageQueueSize 4
 
 /*! \details Enumerates all of the possible states of the OpenRF stack.
@@ -111,25 +89,24 @@ typedef struct
 	/*! MAC address for this radio */
 	UU32 MacAddress;
 
-
 } tOpenRFInitializer;
 
 
-extern void NotifyMacPacketReceived(tPacketTypes packetType,UU32 sourceMACAddress,U8 length, U8 *SDU, U8 rssi);
-extern void NotifyMacReceiveError();
-extern void NotifyMac1Second();
-extern void NotifyMacPacketSent();
+extern void NotifyMacPacketReceived(tPacketTypes packetType, UU32 sourceMACAddress, U8 length, U8 *SDU, U8 rssi);
+extern void NotifyMacReceiveError(void);
+extern void NotifyMac1Second(void);
+extern void NotifyMacPacketSent(void);
 extern void NotifyMacPacketSendError(tTransmitErrors);
-extern void NotifyMac1MilliSecond();
+extern void NotifyMac1MilliSecond(void);
 /*! 
  * \details Queues a packet for transmission
  * \returns One of results enumeration (OK, MallocFailed, etc)
  */
-void OpenRFSendPacket(	UU32 destAddress/*! Destination MAC address */,
-						tPacketTypes packetType/*! Type of packet */,
-						U8 length/*! Length of SDU */,
-						U8 *txBuffer/*! Buffer containing SDU */,
-						U16 preambleCount /*! Preamble bit count in bits */
+void OpenRFSendPacket(	UU32 destAddress		/*! Destination MAC address */,
+						tPacketTypes packetType	/*! Type of packet */,
+						U8 length				/*! Length of SDU */,
+						U8 *txBuffer			/*! Buffer containing SDU */,
+						U16 preambleCount		/*! Preamble bit count in bits */
 						);
 /*! \details Initialize the OpenRF stack
  *
@@ -144,11 +121,11 @@ void OpenRFListenForPacket(tListenModes mode /*! 0=Continuous, 1=ContinuousScan,
  * \details This needs to be called once per main loop.  All internal OpenRF processing happens in here.
  * \return Current state of the OpenRF stack.
  */
-tOpenRFStates OpenRFLoop();
+tOpenRFStates OpenRFLoop(void);
 /*! \details Check to see if we can send a packet
  *  \return  0=Not ready to send, >=1 = Ready to send
  */
-U8 OpenRFReadyToSend();
+U8 OpenRFReadyToSend(void);
 /*! \details Enter low power sleep mode
  *
  */

@@ -82,6 +82,7 @@ typedef enum
 	/*! Acknowledgment packet.  This is sent in response to a UNIACK packet	 with hopping*/
 	kHoppingAckPacketType,
 } tPacketTypes;
+
 /*! \details Enumerates the different listen modes available
  *
  */
@@ -98,6 +99,7 @@ typedef enum
 } tListenModes;
 /*! \details Defines all of the "over the air" data rates that are available.  Both standard and rounded rates are available
  */
+
 typedef enum
 {
 	/*! 1200 BAUD */
@@ -135,6 +137,7 @@ typedef enum
 	/*! 300K BAUD */
 	k300KBPS
 } tDataRates;
+
 /*! \details Defines all of the different radio modes that are available
  */
 typedef enum
@@ -172,46 +175,58 @@ enum
 /*! \details Initialize the RadioAPI.  On return, the radio hardware will be configured and will be asleep.
  */
 U8 RadioInitialize(tRadioInitialization ini /*! Data structure to initialize radio API */);
+
 /*! \details Send a packet using the radio's built in packet engine.
  *  \return 1=success, 0=error with radio
  */
-U8 RadioSendPacket(	UU32 destAddress/*! Destination MAC address */ ,
-		    tPacketTypes packetType/*! Packet type */,
-		    U8 length/*! Length of packet SDU (service data unit or payload) */,
-		    U8 *SDU/*! Pointer to buffer containing packet SDU (service data unit or payload) */,
-		    UU16 preambleCount/*! Preamble count in bits  */,
-		    U8 blocking /*! 1=make this a blocking call, 0=use interrupts instead*/);
+U8 RadioSendPacket(
+		UU32 destAddress	/*! Destination MAC address */ ,
+		tPacketTypes packetType	/*! Packet type */,
+		U8 length			/*! Length of packet SDU (service data unit or payload) */,
+		U8 *SDU				/*! Pointer to buffer containing packet SDU (service data unit or payload) */,
+		UU16 preambleCount	/*! Preamble count in bits  */,
+		U8 blocking			/*! 1=make this a blocking call, 0=use interrupts instead*/
+	);
 
 /*! \details Put radio in receive mode and start listening for an incoming packet
  */
-void RadioReceivePacket(tListenModes listenMode /*! Listen mode */,
-		U16 period /*! Listen period in mSec */);
+void RadioReceivePacket(
+		tListenModes listenMode	/*! Listen mode */,
+		U16 period				/*! Listen period in mSec */
+	);
+
 /*! \details Change the data rate, Frequency deviation, Rx bandwidth, AFC bandwidth, and low beta afc offset
  *
  */
 void RadioSetDataRate(tDataRates dataRate/*!Data rate for TX and RX*/);
+
 /*! \details Set the radio to sleep mode.  This is the lowest power mode of the radio.  In this mode, the radio is completely shut down. .1uA typical in this mode
  *
  */
-U8 RadioSleepMode();
+U8 RadioSleepMode(void);
+
 /*! \details Set the radio to standby mode.  This is the second lowest power mode of the radio.  In this mode, the oscillator is running. 1.25mA typical in this mode
  *
  */
-U8 RadioStandbyMode();
+U8 RadioStandbyMode(void);
+
 /*! \details Sets the radio channel.
  */
 void RadioSetChannel(U8 channel /*! Desired channel.  Valid channels are 0-24*/);
+
 /*! \details Sets the radio transmit power.  If the RFIC is a 1231H, the PA Boost will automatically be used for the high power setting.
  */
 void RadioSetTxPower(U8 power /*! Desired power level.  Bits 6,7,8 turn on PA0,PA1,PA2 respectively.  Bits 0-4 set power level in 1dB increments.  See 3.4.6 in SX1231 datasheet */);
+
 /*! \details Sets the RSSI threshold.  This threshold must be exceeded for a packet reception to happen.
  *
  */
 void RadioSetRSSIThreshold(U8 threshold /*! RSSI threshold.  See SX1231 documentation (Section 6.4) for information about this value.*/);
+
 /*! \details Reads RSSI from the SX1231.  This call disables interrupts globally while it executes.
  *  \return RSSI value.   See section 3.4.9 in SX1231 manual for relationship between this value and RSSI.
  */
-U8 RadioReadRSSIValue();
+U8 RadioReadRSSIValue(void);
 /*! \details Sets the encryption key
  *
  */
@@ -222,47 +237,48 @@ void RadioSetEncryptionKey(U8 *key /*! Pointer to key in memory */,
  *
  */
 void RadioSetSyncCode(UU32 syncCode /*! Sync code */);
+
 /*! \details Gets the temperature from the radio.
  * \return Temperature value. See 3.4.17 in SX1231 manual for information on this value.
  *
  */
-U8 RadioGetTemperature();
+U8 RadioGetTemperature(void);
+U8 RadioGetRFICMode(void);
 
-U8 RadioGetRFICMode();
 // ******************************************************************************************************
 // External event handler declarations
 
 extern void NotifyRadioPacketReceived(tPacketTypes packetType, U8 length, U8 xdata *txBuffer);
-extern void NotifyRadioPacketSent();
-extern void NotifyRadioPacketSendError();
-extern void NotifyRadioReceiveError();
-extern void NotifyRadio1Second();
-extern void NotifyRadio1MilliSecond();
+extern void NotifyRadioPacketSent(void);
+extern void NotifyRadioPacketSendError(void);
+extern void NotifyRadioReceiveError(void);
+extern void NotifyRadio1Second(void);
+extern void NotifyRadio1MilliSecond(void);
 
 // ******************************************************************************************************
 // Internal event handlers we are exposing to MicroAPI
 
 // These are the callbacks from the microapi for various interrupt services
 extern void HandleInterrupt(U8 intType);
-extern void Handle1MsInterrupt();
-extern void Handle1SecInterrupt();
+extern void Handle1MsInterrupt(void);
+extern void Handle1SecInterrupt(void);
+
 // This is a published callback to the MAC layer that notifies the MAC layer when a packet has
 // been received. This is used if ReceivePacket(0) is called.
-extern void HandleRxPacket();
+extern void HandleRxPacket(void);
 
 //*****************************************************************************************************
 // Pin definitions
 
-#define pinCRCOK pinDIO0
-#define pinPKTSENT pinDIO0
-#define pinLOCKPLL pinDIO1
-#define pinTIMEOUT pinDIO1
-#define pinFIFONE pinDIO2
-#define pinSYNCADDR pinDIO3
-#define pinTXRDY pinDIO4
-#define pinRSSI pinDIO4
-#define pinMODERDY pinDIO5
-
+#define pinCRCOK	pinDIO0
+#define pinPKTSENT	pinDIO0
+#define pinLOCKPLL	pinDIO1
+#define pinTIMEOUT	pinDIO1
+#define pinFIFONE	pinDIO2
+#define pinSYNCADDR	pinDIO3
+#define pinTXRDY	pinDIO4
+#define pinRSSI		pinDIO4
+#define pinMODERDY	pinDIO5
 
 #endif
 /*!

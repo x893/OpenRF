@@ -199,7 +199,6 @@ U16 lockTime;
 void OpenRFSendPacket(UU32 destAddress, tPacketTypes packetType, U8 length, U8 *txBuffer, U16 preambleCount)
 {
 	// send the packet and do not block until complete.
-
 	RadioSendPacket(destAddress, packetType, length, txBuffer,(UU16) preambleCount, 0);
 }
 

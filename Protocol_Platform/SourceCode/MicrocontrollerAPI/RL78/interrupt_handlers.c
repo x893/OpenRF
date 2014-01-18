@@ -109,6 +109,7 @@ U8 _uart0TransmitTailPointer = 0;
 #endif
 void INT_UART0_TX (void)
 {
+
 #ifdef UART_ENABLED
 	TXD0 = _uart0TransmitBuffer[_uart0TransmitTailPointer++];
 	_uart0TransmitTailPointer&=UARTBUFFERSIZE-1;
@@ -127,6 +128,7 @@ U8 _uart0ReceiveTailPointer = 0;
 #endif
 void INT_UART0_RX (void)
 {
+
 #ifdef UART_ENABLED
 	_uart0ReceiveBuffer[_uart0ReceiveTailPointer++] = RXD0;
 	_uart0ReceiveTailPointer&=UARTBUFFERSIZE-1;
@@ -155,7 +157,7 @@ extern U8 _uart1TransmitHeadPointer;
 	 _uart1TransmitTailPointer++;
 	 _uart1TransmitTailPointer&=UARTBUFFERSIZE-1;
 
-	 if (_uart1TransmitTailPointer != _uart1TransmitHeadPointer)
+	 if(_uart1TransmitTailPointer != _uart1TransmitHeadPointer)
 		 TXD1 = _uart1TransmitBuffer[_uart1TransmitTailPointer];
 #endif
  }
@@ -173,7 +175,7 @@ void INT_UART1_RX (void)
 	U8 val = RXD1;
 	return;
 	_uart1ReceiveBuffer[_uart1ReceiveTailPointer++] = RXD1;
-	_uart1ReceiveTailPointer &= (UARTBUFFERSIZE - 1);
+	_uart1ReceiveTailPointer&=UARTBUFFERSIZE-1;
 #endif
 }
 //void INT_CSI11 (void) { }
@@ -229,26 +231,26 @@ U8 _RTCDayOfWeek = 0;
 UU32 _RTCDateTimeInSecs;
 void INT_RTC (void)
 {
-	if (RIFG == 1)
+	if(RIFG==1)
 	{
 		RTCC1 &= ~0x08;
 		Handle1SecInterrupt();
 		_RTCSeconds++;
 		_RTCDateTimeInSecs.U32++;
-		if (_RTCSeconds > 59)
+		if(_RTCSeconds>59)
 		{
-			_RTCSeconds = 0;
+			_RTCSeconds=0;
 			_RTCMinutes++;
-			if (_RTCMinutes > 59)
+			if(_RTCMinutes>59)
 			{
 				_RTCMinutes = 0;
 				_RTCHours++;
-				if (_RTCHours > 23)
+				if(_RTCHours>23)
 				{
-					_RTCHours = 0;
+					_RTCHours=0;
 					_RTCDayOfWeek++;
-					if (_RTCDayOfWeek > 6)
-						_RTCDayOfWeek = 0;
+					if(_RTCDayOfWeek>6)
+						_RTCDayOfWeek=0;
 				}
 			}
 		}
@@ -269,7 +271,7 @@ void INT_IT (void)
 void INT_KR (void)
 {
 
-	HandleInterrupt(0x80 + (P7 & 0x07));
+	HandleInterrupt(0x80 + (P7&0x07));
 }
 
 /*

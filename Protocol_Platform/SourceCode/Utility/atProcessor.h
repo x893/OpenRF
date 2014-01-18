@@ -18,7 +18,7 @@
 #ifndef AT_H
 #define AT_H
 
-void AtProcess();
-void AtInitialize();
+void AtProcess(void);
+void AtInitialize(void);
 
 #endif

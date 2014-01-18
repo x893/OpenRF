@@ -1,20 +1,3 @@
-/*************************************************************************************
-**																					**
-**	radioapi.c			Si1000_4430(1)(1) RFIC										**
-** 																					**
-**************************************************************************************
-**																					**
-** Written By:	Steve Montgomery													**
-**				Digital Six Laboratories LLC										**
-** (c)2012 Digital Six Labs, All rights reserved									**
-**																					**
-**************************************************************************************/
-//
-// Revision History
-//
-// Revision		Date	Revisor		Description
-// ===================================================================================
-// ================================================z	===================================
 #include "radioapi.h"
 
 struct
@@ -54,6 +37,7 @@ U8 _registers[0x80];
 #define ReadCHARSPI ReadCharSPI
 
 #define kModeChangeTimeout 8192
+
 // *************************************************************************************************
 // Utility functions used internally by RadioAPI
 
@@ -64,10 +48,10 @@ U8 WaitForModeChange()
 
 	timeOut = kModeChangeTimeout;
 
-	while(timeOut && !(ReadCHARSPI(RegIrqFlags1)&&0x80))
+	while (timeOut && !(ReadCHARSPI(RegIrqFlags1) && 0x80))
 		timeOut--;
 
-	if(timeOut)
+	if (timeOut)
 		return 1;
 	else
 		return 0;
@@ -76,28 +60,29 @@ U8 WaitForModeChange()
 void ReadRegs()
 {
 	int i;
-	for(i=0x1;i<0x80;i++)
+	for (i = 0x01; i < 0x80; i++)
 		_registers[i] = ReadCHARSPI(i);
-
 }
+
 void ClearFIFO()
 {
-	WriteCHARSPI(RegIrqFlags2,0x10);
+	WriteCHARSPI(RegIrqFlags2, 0x10);
 }
+
 void HandleTimeout()
 {
-	if(radioPrivateData.ListenMode&0x80)
+	if (radioPrivateData.ListenMode & 0x80)
 	{
 		radioPrivateData.CurrentChannel++;
-		if(radioPrivateData.CurrentChannel>FHSSCHANNELS)
+		if (radioPrivateData.CurrentChannel > FHSSCHANNELS)
 		{
 			if(radioPrivateData.ListenMode == kContinuousScan)
-				radioPrivateData.CurrentChannel=0;
+				radioPrivateData.CurrentChannel = 0;
 		}
 		// at this point, if we got to the end of the channels and we are in continuous scan mode, the channel will wrap to 0.
 		//  If the channel is FHSSCHANNELS, then we are in PeriodicScan mode and we need to stop the process here, put the radio
 		// to sleep, and indicate we are sleeping
-		if(radioPrivateData.CurrentChannel == FHSSCHANNELS)
+		if (radioPrivateData.CurrentChannel == FHSSCHANNELS)
 		{
 			// this ensures we start at the right channel next time
 			radioPrivateData.CurrentChannel = 0;
@@ -110,7 +95,7 @@ void HandleTimeout()
 			// set the next channel
 			RadioSetChannel(radioPrivateData.CurrentChannel);
 			// put the radio in receive mode
-			WriteCHARSPI(RegOpMode,0x10);
+			WriteCHARSPI(RegOpMode, 0x10);
 			WaitForModeChange();
 		}
 	}
@@ -126,15 +111,13 @@ void HandleReceivedPacket()
 	U8 x;
 	U8 length, orgLength;
 
-
-
 	tPacketTypes packetType;
-	WriteCHARSPI(RegOpMode,0x00);
+	WriteCHARSPI(RegOpMode, 0x00);
 	WaitForModeChange();
 
 	int i;
 	length = ReadCHARSPI(RegFifo);
-	if(length>64)
+	if(length > 64)
 		NotifyRadioReceiveError();
 	else
 	{
@@ -142,18 +125,18 @@ void HandleReceivedPacket()
 		packetType = ReadCHARSPI(RegFifo);
 
 		// The remaining bytes go in the buffer
-		if(length>64)
+		if(length > 64)
 			NotifyRadioReceiveError();
 		else
 		{
-			for(i=0;i<length;i++)
+			for(i = 0; i < length; i++)
 			{
 				x=ReadCHARSPI(RegFifo);
 				radioPrivateData.ReceiveBuffer[i] = x;
 			}
 			sdu = &(radioPrivateData.ReceiveBuffer[0]);
 			// Send it all to the next layer up.
-			NotifyRadioPacketReceived((U8)packetType,length, sdu);
+			NotifyRadioPacketReceived((U8)packetType, length, sdu);
 		}
 
 	}
@@ -177,6 +160,7 @@ void HopChannel()
 		RadioSetChannel(_hopTable25[radioPrivateData.HopTable][radioPrivateData.HopIndex]);
 	}
 }
+
 // ***********************************************************************************
 // *** Interrupt Handlers ***
 // These are public functions exposed by radioapi and used by microapi to notify
@@ -186,7 +170,6 @@ void HopChannel()
 // called by microcontroller for io based interrupts
 void HandleInterrupt(U8 intType)
 {
-
 	U8 idata isr1;
 	U8 idata isr2;
 
@@ -208,7 +191,6 @@ void HandleInterrupt(U8 intType)
 					HandleReceivedPacket();
 					RadioSleepMode();
 				}
-
 				else // if(isr1 & EZRADIOPRO_ICRCERROR)
 					NotifyRadioReceiveError();
 				break;
@@ -235,8 +217,7 @@ void HandleInterrupt(U8 intType)
 		{
 			case kListenMode:
 			case kReceiveMode:
-
-				if(isr1 & 0x04)
+				if (isr1 & 0x04)
 					HandleTimeout();
 				break;
 			case kTransmitMode:
@@ -268,11 +249,12 @@ void StateMachine()
 void Handle1MsInterrupt()
 {
 	int i;
-	for(i=0;i<MAXTIMERS;i++)
+	for (i = 0; i < MAXTIMERS; i++)
 		radioPrivateData.Timers[i]++;
 	StateMachine();
 	NotifyRadio1MilliSecond();
 }
+
 // called by microcontroller every second.  This is used to drive an internal clock
 void Handle1SecInterrupt()
 {
@@ -303,12 +285,12 @@ U8 RadioInitialize(tRadioInitialization ini)
 	radioPrivateData.GfskEnabled = ini.GausianEnabled;
 
 	// Radio starts in sleep mode
-	WriteCHARSPI(RegOpMode,0x00);
+	WriteCHARSPI(RegOpMode, 0x00);
 	if(ini.GausianEnabled)
 	{
 		// Packet mode, FSK modulation, Gausian Filter Bt=0.5
 		WriteCHARSPI(RegDataModul, 0x02);		// Set AfcLowBetaOn = 1;
-		WriteCHARSPI(RegAfcCtrl,0x20);
+		WriteCHARSPI(RegAfcCtrl, 0x20);
 	}
 	else
 	{
@@ -338,31 +320,31 @@ U8 RadioInitialize(tRadioInitialization ini)
 	// This is needed because the radio will hang if it triggers on a false positive of RSSI threshold and no packet is received.  Since it won't automatically restart the cycle
 	// and re-enter the RSSI phase, it never generates a PayloadReady interrupt.  With this timeout value programmed, the radio will let us know when 80 byte times have expired
 	// since a valid RSSI with no corresponding packet.  We will check this in our OpenRF loop to catch the problem and reset the receiver portion of the radio.
-	WriteCHARSPI(RegRxTimeout2,0x40);
+	WriteCHARSPI(RegRxTimeout2, 0x40);
 	// initialize the AES key
-	for(i=0x3e;i<=0x4d;i++)
-		WriteCHARSPI(i,0x55);
+	for(i = 0x3E; i <= 0x4D; i++)
+		WriteCHARSPI(i, 0x55);
 
 	// set the mode to idle with the sequencer on
 	WriteCHARSPI(RegOpMode, 0x00);
-	WriteCHARSPI(RegAutoModes,0x00);
+	WriteCHARSPI(RegAutoModes, 0x00);
 	// Preamble count is 24
-	WriteCHARSPI(RegPreambleMsb,0x00);
+	WriteCHARSPI(RegPreambleMsb, 0x00);
 	WriteCHARSPI(RegPreambleLsb, 0x18);
 
 	// Config: sync on,FIFO fill on syncaddr interrupt, sync size=8, synctol = 0
-	WriteCHARSPI(RegSyncConfig,0x98);
+	WriteCHARSPI(RegSyncConfig, 0x98);
 
 	// variable length packet, data whitening, crc on, crc autoclear is on, no address filtering
-	WriteCHARSPI(RegPacketConfig1,0xd0);
+	WriteCHARSPI(RegPacketConfig1, 0xd0);
 
 	// Maximum receive packet length is 48
 	WriteCHARSPI(RegPayloadLength, 0x30);
 
 	// interpacketRxDelay = 0, autorxrestarton = off, aes = on
-	WriteCHARSPI(RegPacketConfig2,0x01);
+	WriteCHARSPI(RegPacketConfig2, 0x01);
 
-	WriteCHARSPI(RegTestDagc,0x00);
+	WriteCHARSPI(RegTestDagc, 0x00);
 	ClearFIFO();
 	WriteCHARSPI(RegSyncValue1,ini.NetworkId.U8[3]);
 	WriteCHARSPI(RegSyncValue1,ini.NetworkId.U8[2]);
@@ -380,7 +362,7 @@ U8 RadioInitialize(tRadioInitialization ini)
 
 U8 RadioSendPacket(UU32 destAddress, tPacketTypes packetType, U8 length, U8 *txBuffer, UU16 preambleCount, U8 blocking)
 {
-	U8 sduLength,i,a,b, hopping;
+	U8 sduLength, i, a, b, hopping;
 
 	// if the MSB of packetType is set, we are supposed to hop
 	hopping = packetType & 0x80;
@@ -401,7 +383,7 @@ U8 RadioSendPacket(UU32 destAddress, tPacketTypes packetType, U8 length, U8 *txB
 	while((ReadCHARSPI(RegIrqFlags1)&0x80)==0)
 		ReadRegs();
 
-	if( (packetType==kUniAckPacketType) || (packetType==kUniNoAckPacketType) )
+	if (packetType == kUniAckPacketType || packetType == kUniNoAckPacketType)
 	{
 		// NOTE: This must be set to TX start on threshold or else the packet send does not work.  That is the purpose of the 0x7F mask
 		WriteCHARSPI(RegFifoThresh,((length+9) & 0x7f));
@@ -462,10 +444,10 @@ U8 RadioSendPacket(UU32 destAddress, tPacketTypes packetType, U8 length, U8 *txB
 	}
 	SetIOForTransmit();
 
-	preambleCount.U16>>=8;
+	preambleCount.U16 >>= 8;
 
-	WriteCHARSPI(RegPreambleMsb,preambleCount.U8[1]);
-	WriteCHARSPI(RegPreambleLsb,preambleCount.U8[0]);
+	WriteCHARSPI(RegPreambleMsb, preambleCount.U8[1]);
+	WriteCHARSPI(RegPreambleLsb, preambleCount.U8[0]);
 
    	WriteCHARSPI(RegOpMode,0x0C);
 	radioPrivateData.Mode = kTransmitMode;
