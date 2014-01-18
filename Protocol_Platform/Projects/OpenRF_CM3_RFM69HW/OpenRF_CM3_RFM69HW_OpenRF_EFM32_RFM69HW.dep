@@ -1,55 +1,0 @@
-Dependencies for Project 'OpenRF_CM3_RFM69HW', Target 'OpenRF_EFM32_RFM69HW': (DO NOT MODIFY !)
-F (.\App\OpenRF_CM3_RFM69HW.c)(0x52DAEE08)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I D:\Micro\OpenRF\OpenRF\Protocol_Platform\Projects\OpenRF_CM3_RFM69HW\RTE-I C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include-D_RTE_ -DEFM32G880F128DEF -DEFM32G880F128 -DRADIO_SX1231 -o .\build\efm32\openrf_cm3_rfm69hw.o --omf_browse .\build\efm32\openrf_cm3_rfm69hw.crf --depend .\build\efm32\openrf_cm3_rfm69hw.d)
-I (App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\microapi.h)(0x52DAED36)
-I (App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\TypeDefinitions.h)(0x52DAECE1)
-I (App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\iodefine.h)(0x52DADF26)
-I (App\..\..\..\SourceCode\OpenRF_MAC\openrf_mac.h)(0x52DAEB77)
-I (App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\radioapi.h)(0x52DAEBEE)
-I (App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\..\..\MicrocontrollerAPI\RL78\microapi.h)(0x526DCA46)
-I (App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\sx1231_defs.h)(0x526DCA46)
-I (App\..\Utilities\atProcessor.h)(0x52DAEAD4)
-F (RTE\Device\EFM32G880F128\startup_efm32g.s)(0x52DADDEA)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\Micro\OpenRF\OpenRF\Protocol_Platform\Projects\OpenRF_CM3_RFM69HW\RTE-I C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include--list .\build\efm32\startup_efm32g.lst --xref -o .\build\efm32\startup_efm32g.o --depend .\build\efm32\startup_efm32g.d)
-F (RTE\Device\EFM32G880F128\system_efm32g.c)(0x51B72BF6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections-I D:\Micro\OpenRF\OpenRF\Protocol_Platform\Projects\OpenRF_CM3_RFM69HW\RTE-I C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include-D_RTE_ -DEFM32G880F128DEF -DEFM32G880F128 -DRADIO_SX1231 -o .\build\efm32\system_efm32g.o --omf_browse .\build\efm32\system_efm32g.crf --depend .\build\efm32\system_efm32g.d)
-I (C:\Tools\Keil5\ARM\ARMCC\include\stdint.h)(0x5284AC6A)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\em_device.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g880f128.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include\core_cm3.h)(0x512C64B2)
-I (C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include\core_cmInstr.h)(0x51BAA9C4)
-I (C:\Tools\Keil5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include\core_cmFunc.h)(0x512C64B2)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\system_efm32g.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_msc.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_emu.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_rmu.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_cmu.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_aes.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_ebi.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_gpio_p.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_gpio.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_prs_ch.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_prs.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dma_ch.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dma.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_timer_cc.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_timer.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_usart.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_leuart.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_letimer.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_pcnt.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_i2c.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_adc.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dac.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_acmp.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_vcmp.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_lcd.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_rtc.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_wdog.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dma_descriptor.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_devinfo.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_romtable.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_calibrate.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_prs_signals.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dmareq.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_dmactrl.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_uart.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_af_ports.h)(0x51B72BF6)
-I (C:\Tools\Keil5\ARM\PACK\Keil\EFM32Gxxx_DFP\1.0.0\Device\Include\efm32g_af_pins.h)(0x51B72BF6)
