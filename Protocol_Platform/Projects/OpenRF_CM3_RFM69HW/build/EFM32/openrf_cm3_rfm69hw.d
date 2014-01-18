@@ -1,9 +1,0 @@
-.\build\efm32\openrf_cm3_rfm69hw.o: App\OpenRF_CM3_RFM69HW.c
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\microapi.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\TypeDefinitions.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\MicrocontrollerAPI\EFM32\iodefine.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\OpenRF_MAC\openrf_mac.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\radioapi.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\..\..\MicrocontrollerAPI\RL78\microapi.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\..\..\SourceCode\OpenRF_MAC\..\Radio\SX1231\sx1231_defs.h
-.\build\efm32\openrf_cm3_rfm69hw.o: App\..\Utilities\atProcessor.h

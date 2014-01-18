@@ -17,3 +17,10 @@
 *.exe
 *.out
 *.app
+
+*.uvoptx
+*.build_log.htm
+*.uvguix.*
+*.bak
+*.dep
+[Bb]uild/
