@@ -1,0 +1,8 @@
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\bin\Debug\FHSSChannelCalculator.exe
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\bin\Debug\FHSSChannelCalculator.pdb
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.csprojResolveAssemblyReference.cache
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.Form1.resources
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.Properties.Resources.resources
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.csproj.GenerateResource.Cache
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.exe
+D:\Micro\OpenRF\openrf_cc698eb194de\Protocol_Platform\Tools\FHSSChannelCalculator\FHSSChannelCalculator\obj\Debug\FHSSChannelCalculator.pdb

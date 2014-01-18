@@ -1,0 +1,4 @@
+/* Linker option for on-chip debug option byte and user option byte*/
+-gi062442624426244262442h
+-go084h,3F00h,256
+-gb0EFFFE8h

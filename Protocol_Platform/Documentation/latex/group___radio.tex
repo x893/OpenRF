@@ -1,0 +1,435 @@
+\hypertarget{group___radio}{\section{Radio A\-P\-I}
+\label{group___radio}\index{Radio A\-P\-I@{Radio A\-P\-I}}
+}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___radio_gad2b6877d3d2c1164d3373dc9b98cab84}{t\-Radio\-States} \{ \\*
+\hyperlink{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5271b78d0e7e16099e5569ac198b6d4c}{k\-Tx\-Mode} =0, 
+\hyperlink{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a10fa59809c02d95ab838667349b2d5f6}{k\-Idle\-Rx\-Mode}, 
+\hyperlink{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5f73ccc433cbdf965d516c55c5a5c4ef}{k\-Rx\-Mode}, 
+\hyperlink{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a635358a3f25c30feb113eb976975a947}{k\-Rx\-Ack\-Mode}, 
+\\*
+\hyperlink{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a8ac217adac9fd5fbd2fb77b836ecd5cb}{k\-Hop\-Mode}
+ \}
+\item 
+enum \hyperlink{group___radio_gaba81c4c5fad7e2e0cef01f8e6c710ecb}{t\-Packet\-Types} \{ \hyperlink{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba05720cb63d7daa7b80a60a8930396ca3}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K} =0, 
+\hyperlink{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba0671952773f4139f7909fc2ce2dda05a}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K}, 
+\hyperlink{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbab08634eadf8db8eb090dfec2a327d2b5}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T}, 
+\hyperlink{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbacb072737fc8b959c9d08bccf3880a372}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K}
+ \}
+\item 
+enum \hyperlink{group___radio_ga8ca09000106eab66e7f5a4998107f805}{t\-Data\-Rates} \{ \\*
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a7e15671135d49305cdb4aad417786c18}{k1200\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805adbbb374a9a080b76548af7683da68b29}{k2400\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a023ffe0b4bbe00860a2ed860922a937a}{k4800\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805abf49e6adc1c2aad4dffd53d6be7379c5}{k9600\-B\-P\-S}, 
+\\*
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a450e0a82e83742ae449a373be623c302}{k19200\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a113062d85dac510f47fb5d804e88cde9}{k38400\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a2572e6d810fc2588201363105e401c82}{k76800\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a6303df0124aa41b26be267f9be5bde19}{k153600\-B\-P\-S}, 
+\\*
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a8d51ccbcbe44f6def7ea157fd249a671}{k12\-\_\-5\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805afffb96621cb16b3c6fc10c9f24531b05}{k25\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805aedd58e14f26ddb9c640a3a744965369f}{k50\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a24852b4ced73ed21a1a6630b21291e53}{k100\-K\-B\-P\-S}, 
+\\*
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805aa936d4e567be68709e53d7a59cb14006}{k150\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805ac81798cfb7ad3a3206469d092a485d98}{k200\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a46eb5805a25579ff805b07d351fa2d59}{k250\-K\-B\-P\-S}, 
+\hyperlink{group___radio_gga8ca09000106eab66e7f5a4998107f805a3ec80967a45947ff80a5ba26eb87b46f}{k300\-K\-B\-P\-S}
+ \}
+\item 
+enum \hyperlink{group___radio_gab7388600f063db50b675fae0560b237e}{t\-Operating\-Modes} \{ \hyperlink{group___radio_ggab7388600f063db50b675fae0560b237ea8bb009537517b8b21e34445289b8794b}{k\-Sleep\-Mode}, 
+\hyperlink{group___radio_ggab7388600f063db50b675fae0560b237ea0a8747056a88188df38c97538e709414}{k\-Standby\-Mode}, 
+\hyperlink{group___radio_ggab7388600f063db50b675fae0560b237ea357e107d708cb7e0559f103af575c600}{k\-F\-S\-Mode}, 
+\hyperlink{group___radio_ggab7388600f063db50b675fae0560b237eaf46e82d930f766f17f9e75f87302a4bc}{k\-Transmit\-Mode}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___radio_ga34afb92015b77c5e212113dc24c666d9}{Set\-Operating\-Mode} (\hyperlink{group___radio_gab7388600f063db50b675fae0560b237e}{t\-Operating\-Modes} mode)
+\item 
+\hyperlink{group___radio_gad2b6877d3d2c1164d3373dc9b98cab84}{t\-Radio\-States} \hyperlink{group___radio_ga8f4ded58caebb26cf4d2b83c46cfed13}{Get\-Radio\-State} (void)
+\item 
+void \hyperlink{group___radio_ga78b5c441166756d9af91a646e0b2730f}{Set\-Channel} (U8 channel)
+\begin{DoxyCompactList}\small\item\em U8 \hyperlink{group___radio_ga78b5c441166756d9af91a646e0b2730f}{Set\-Channel(\-U8 Channel)} \end{DoxyCompactList}\item 
+void \hyperlink{group___radio_gae43e030b3b920054bc17bd3048537a88}{Set\-Tx\-Power} (U8 power)
+\begin{DoxyCompactList}\small\item\em U8 \hyperlink{group___radio_gae43e030b3b920054bc17bd3048537a88}{Set\-Tx\-Power(\-U8 power)} \end{DoxyCompactList}\item 
+void \hyperlink{group___radio_ga9d15a38533c839197cfc7a84ca016de9}{Send\-Packet} (U\-U32 dest\-Address, \hyperlink{group___radio_gaba81c4c5fad7e2e0cef01f8e6c710ecb}{t\-Packet\-Types} packet\-Type, U8 length, U8 xdata $\ast$S\-D\-U)
+\begin{DoxyCompactList}\small\item\em Method\-Result Send\-Packet(\-U8 length, U8 $\ast$\-S\-D\-U) \end{DoxyCompactList}\item 
+void \hyperlink{group___radio_gacbe89d67bb04cbb15e4f12eaf4c7558e}{Listen\-For\-Packet} ()
+\item 
+void \hyperlink{group___radio_gafd087444df2d9138356991afbc1135a6}{Initialize\-Radio\-A\-P\-I} (U8 fhss\-Step\-Size, \hyperlink{group___radio_ga8ca09000106eab66e7f5a4998107f805}{t\-Data\-Rates} data\-Rate)
+\begin{DoxyCompactList}\small\item\em U8 \hyperlink{group___radio_gafd087444df2d9138356991afbc1135a6}{Initialize\-Radio\-A\-P\-I()} \end{DoxyCompactList}\item 
+void \hyperlink{group___radio_ga70da240bdf435f229f9eb6045a418dba}{Set\-M\-A\-C\-Address} (U\-U32 mac\-Address)
+\begin{DoxyCompactList}\small\item\em Method\-Result \hyperlink{group___radio_ga70da240bdf435f229f9eb6045a418dba}{Set\-M\-A\-C\-Address(\-U\-U32 mac\-Address)} \end{DoxyCompactList}\item 
+void \hyperlink{group___radio_ga859abda5461f9370ecfa13165b7088ce}{Set\-Data\-Rate} (\hyperlink{group___radio_ga8ca09000106eab66e7f5a4998107f805}{t\-Data\-Rates} data\-Rate)
+\item 
+void \hyperlink{group___radio_ga95f238c518501c80a31b90d5e9f7c4dc}{Resend\-Packet} ()
+\item 
+void \hyperlink{group___radio_ga9774cc892671d34ecff74c538276cc9f}{Hop\-Channel\-Rx} ()
+\item 
+void \hyperlink{group___radio_ga92cebd918da04bf95b3ee415821358b5}{Hop\-Channel\-Tx} ()
+\item 
+void \hyperlink{group___radio_gae25f772e91044b5644349d607f3e48a3}{Set\-Hop\-Table} (U8 table\-Number)
+\begin{DoxyCompactList}\small\item\em void \hyperlink{group___radio_gae25f772e91044b5644349d607f3e48a3}{Set\-Hop\-Table(\-U8 table\-Index)} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the radio A\-P\-I for the S\-X1231\-H radio. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group___radio_ga8ca09000106eab66e7f5a4998107f805}{\index{Radio A\-P\-I@{Radio A\-P\-I}!t\-Data\-Rates@{t\-Data\-Rates}}
+\index{t\-Data\-Rates@{t\-Data\-Rates}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{t\-Data\-Rates}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Data\-Rates}}}\label{group___radio_ga8ca09000106eab66e7f5a4998107f805}
+Defines all of the \char`\"{}over the air\char`\"{} data rates that are available. Both standard and rounded rates are available \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k1200\-B\-P\-S@{k1200\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k1200\-B\-P\-S@{k1200\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a7e15671135d49305cdb4aad417786c18}{k1200\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a7e15671135d49305cdb4aad417786c18}
+}]1200 B\-A\-U\-D \index{k2400\-B\-P\-S@{k2400\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k2400\-B\-P\-S@{k2400\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805adbbb374a9a080b76548af7683da68b29}{k2400\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805adbbb374a9a080b76548af7683da68b29}
+}]2400 B\-A\-U\-D \index{k4800\-B\-P\-S@{k4800\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k4800\-B\-P\-S@{k4800\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a023ffe0b4bbe00860a2ed860922a937a}{k4800\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a023ffe0b4bbe00860a2ed860922a937a}
+}]4800 B\-A\-U\-D \index{k9600\-B\-P\-S@{k9600\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k9600\-B\-P\-S@{k9600\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805abf49e6adc1c2aad4dffd53d6be7379c5}{k9600\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805abf49e6adc1c2aad4dffd53d6be7379c5}
+}]9600 B\-A\-U\-D \index{k19200\-B\-P\-S@{k19200\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k19200\-B\-P\-S@{k19200\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a450e0a82e83742ae449a373be623c302}{k19200\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a450e0a82e83742ae449a373be623c302}
+}]19200 B\-A\-U\-D \index{k38400\-B\-P\-S@{k38400\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k38400\-B\-P\-S@{k38400\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a113062d85dac510f47fb5d804e88cde9}{k38400\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a113062d85dac510f47fb5d804e88cde9}
+}]38400 B\-A\-U\-D \index{k76800\-B\-P\-S@{k76800\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k76800\-B\-P\-S@{k76800\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a2572e6d810fc2588201363105e401c82}{k76800\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a2572e6d810fc2588201363105e401c82}
+}]76800 B\-A\-U\-D \index{k153600\-B\-P\-S@{k153600\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k153600\-B\-P\-S@{k153600\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a6303df0124aa41b26be267f9be5bde19}{k153600\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a6303df0124aa41b26be267f9be5bde19}
+}]153600 B\-A\-U\-D \index{k12\-\_\-5\-K\-B\-P\-S@{k12\-\_\-5\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k12\-\_\-5\-K\-B\-P\-S@{k12\-\_\-5\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a8d51ccbcbe44f6def7ea157fd249a671}{k12\-\_\-5\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a8d51ccbcbe44f6def7ea157fd249a671}
+}]12.\-5\-K B\-A\-U\-D \index{k25\-K\-B\-P\-S@{k25\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k25\-K\-B\-P\-S@{k25\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805afffb96621cb16b3c6fc10c9f24531b05}{k25\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805afffb96621cb16b3c6fc10c9f24531b05}
+}]25\-K B\-A\-U\-D \index{k50\-K\-B\-P\-S@{k50\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k50\-K\-B\-P\-S@{k50\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805aedd58e14f26ddb9c640a3a744965369f}{k50\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805aedd58e14f26ddb9c640a3a744965369f}
+}]50\-K B\-A\-U\-D \index{k100\-K\-B\-P\-S@{k100\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k100\-K\-B\-P\-S@{k100\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a24852b4ced73ed21a1a6630b21291e53}{k100\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a24852b4ced73ed21a1a6630b21291e53}
+}]100\-K B\-A\-U\-D \index{k150\-K\-B\-P\-S@{k150\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k150\-K\-B\-P\-S@{k150\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805aa936d4e567be68709e53d7a59cb14006}{k150\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805aa936d4e567be68709e53d7a59cb14006}
+}]150\-K B\-A\-U\-D \index{k200\-K\-B\-P\-S@{k200\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k200\-K\-B\-P\-S@{k200\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805ac81798cfb7ad3a3206469d092a485d98}{k200\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805ac81798cfb7ad3a3206469d092a485d98}
+}]200\-K B\-A\-U\-D \index{k250\-K\-B\-P\-S@{k250\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k250\-K\-B\-P\-S@{k250\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a46eb5805a25579ff805b07d351fa2d59}{k250\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a46eb5805a25579ff805b07d351fa2d59}
+}]250\-K B\-A\-U\-D \index{k300\-K\-B\-P\-S@{k300\-K\-B\-P\-S}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k300\-K\-B\-P\-S@{k300\-K\-B\-P\-S}}\item[{\em 
+\hypertarget{group___radio_gga8ca09000106eab66e7f5a4998107f805a3ec80967a45947ff80a5ba26eb87b46f}{k300\-K\-B\-P\-S}\label{group___radio_gga8ca09000106eab66e7f5a4998107f805a3ec80967a45947ff80a5ba26eb87b46f}
+}]300\-K B\-A\-U\-D \end{description}
+\end{Desc}
+
+
+Definition at line 83 of file radioapi.\-h.
+
+\hypertarget{group___radio_gab7388600f063db50b675fae0560b237e}{\index{Radio A\-P\-I@{Radio A\-P\-I}!t\-Operating\-Modes@{t\-Operating\-Modes}}
+\index{t\-Operating\-Modes@{t\-Operating\-Modes}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{t\-Operating\-Modes}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Operating\-Modes}}}\label{group___radio_gab7388600f063db50b675fae0560b237e}
+Defines all of the different radio modes that are available \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\-Sleep\-Mode@{k\-Sleep\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Sleep\-Mode@{k\-Sleep\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggab7388600f063db50b675fae0560b237ea8bb009537517b8b21e34445289b8794b}{k\-Sleep\-Mode}\label{group___radio_ggab7388600f063db50b675fae0560b237ea8bb009537517b8b21e34445289b8794b}
+}]All blocks disabled \index{k\-Standby\-Mode@{k\-Standby\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Standby\-Mode@{k\-Standby\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggab7388600f063db50b675fae0560b237ea0a8747056a88188df38c97538e709414}{k\-Standby\-Mode}\label{group___radio_ggab7388600f063db50b675fae0560b237ea0a8747056a88188df38c97538e709414}
+}]Top regulator and crystal osc enabled \index{k\-F\-S\-Mode@{k\-F\-S\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-F\-S\-Mode@{k\-F\-S\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggab7388600f063db50b675fae0560b237ea357e107d708cb7e0559f103af575c600}{k\-F\-S\-Mode}\label{group___radio_ggab7388600f063db50b675fae0560b237ea357e107d708cb7e0559f103af575c600}
+}]Frequency synthesizer is enabled \index{k\-Transmit\-Mode@{k\-Transmit\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Transmit\-Mode@{k\-Transmit\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggab7388600f063db50b675fae0560b237eaf46e82d930f766f17f9e75f87302a4bc}{k\-Transmit\-Mode}\label{group___radio_ggab7388600f063db50b675fae0560b237eaf46e82d930f766f17f9e75f87302a4bc}
+}]Frequency synthesizer and transmitter are enabled \end{description}
+\end{Desc}
+
+
+Definition at line 120 of file radioapi.\-h.
+
+\hypertarget{group___radio_gaba81c4c5fad7e2e0cef01f8e6c710ecb}{\index{Radio A\-P\-I@{Radio A\-P\-I}!t\-Packet\-Types@{t\-Packet\-Types}}
+\index{t\-Packet\-Types@{t\-Packet\-Types}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{t\-Packet\-Types}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Packet\-Types}}}\label{group___radio_gaba81c4c5fad7e2e0cef01f8e6c710ecb}
+Defines all of the different packet types that are available \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K}}\item[{\em 
+\hypertarget{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba05720cb63d7daa7b80a60a8930396ca3}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-A\-C\-K}\label{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba05720cb63d7daa7b80a60a8930396ca3}
+}]Unicast packet (point to point) with acknowledgment \index{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K}}\item[{\em 
+\hypertarget{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba0671952773f4139f7909fc2ce2dda05a}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-U\-N\-I\-N\-O\-A\-C\-K}\label{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecba0671952773f4139f7909fc2ce2dda05a}
+}]Unicast packet(point to point) without acknowledgment \index{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T}}\item[{\em 
+\hypertarget{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbab08634eadf8db8eb090dfec2a327d2b5}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-M\-U\-L\-T\-I\-C\-A\-S\-T}\label{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbab08634eadf8db8eb090dfec2a327d2b5}
+}]Multicast packet. This is a broadcast packet to everyone on the network \index{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K@{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K}}\item[{\em 
+\hypertarget{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbacb072737fc8b959c9d08bccf3880a372}{P\-A\-C\-K\-E\-T\-T\-Y\-P\-E\-\_\-\-A\-C\-K}\label{group___radio_ggaba81c4c5fad7e2e0cef01f8e6c710ecbacb072737fc8b959c9d08bccf3880a372}
+}]Acknowledgment packet. This is sent in response to a U\-N\-I\-A\-C\-K packet \end{description}
+\end{Desc}
+
+
+Definition at line 70 of file radioapi.\-h.
+
+\hypertarget{group___radio_gad2b6877d3d2c1164d3373dc9b98cab84}{\index{Radio A\-P\-I@{Radio A\-P\-I}!t\-Radio\-States@{t\-Radio\-States}}
+\index{t\-Radio\-States@{t\-Radio\-States}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{t\-Radio\-States}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Radio\-States}}}\label{group___radio_gad2b6877d3d2c1164d3373dc9b98cab84}
+Defines all of the different states that the radio can be in. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\-Tx\-Mode@{k\-Tx\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Tx\-Mode@{k\-Tx\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5271b78d0e7e16099e5569ac198b6d4c}{k\-Tx\-Mode}\label{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5271b78d0e7e16099e5569ac198b6d4c}
+}]Transmitting \index{k\-Idle\-Rx\-Mode@{k\-Idle\-Rx\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Idle\-Rx\-Mode@{k\-Idle\-Rx\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a10fa59809c02d95ab838667349b2d5f6}{k\-Idle\-Rx\-Mode}\label{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a10fa59809c02d95ab838667349b2d5f6}
+}]Listening for incoming packet \index{k\-Rx\-Mode@{k\-Rx\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Rx\-Mode@{k\-Rx\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5f73ccc433cbdf965d516c55c5a5c4ef}{k\-Rx\-Mode}\label{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a5f73ccc433cbdf965d516c55c5a5c4ef}
+}]Receiving incoming packet \index{k\-Rx\-Ack\-Mode@{k\-Rx\-Ack\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Rx\-Ack\-Mode@{k\-Rx\-Ack\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a635358a3f25c30feb113eb976975a947}{k\-Rx\-Ack\-Mode}\label{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a635358a3f25c30feb113eb976975a947}
+}]Receiving an acknowledgment \index{k\-Hop\-Mode@{k\-Hop\-Mode}!Radio A\-P\-I@{Radio A\-P\-I}}\index{Radio A\-P\-I@{Radio A\-P\-I}!k\-Hop\-Mode@{k\-Hop\-Mode}}\item[{\em 
+\hypertarget{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a8ac217adac9fd5fbd2fb77b836ecd5cb}{k\-Hop\-Mode}\label{group___radio_ggad2b6877d3d2c1164d3373dc9b98cab84a8ac217adac9fd5fbd2fb77b836ecd5cb}
+}]Hopping in progress \end{description}
+\end{Desc}
+
+
+Definition at line 55 of file radioapi.\-h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group___radio_ga8f4ded58caebb26cf4d2b83c46cfed13}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Get\-Radio\-State@{Get\-Radio\-State}}
+\index{Get\-Radio\-State@{Get\-Radio\-State}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Get\-Radio\-State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-Radio\-States} Get\-Radio\-State (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga8f4ded58caebb26cf4d2b83c46cfed13}
+Gets the state of the internal radio A\-P\-I. This state is determined by the actual function of the radio at a given time. \begin{DoxyReturn}{Returns}
+Current state 
+\end{DoxyReturn}
+\hypertarget{group___radio_ga9774cc892671d34ecff74c538276cc9f}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Hop\-Channel\-Rx@{Hop\-Channel\-Rx}}
+\index{Hop\-Channel\-Rx@{Hop\-Channel\-Rx}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Hop\-Channel\-Rx}]{\setlength{\rightskip}{0pt plus 5cm}void Hop\-Channel\-Rx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga9774cc892671d34ecff74c538276cc9f}
+Hops the receiver to the next channel 
+
+Definition at line 330 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga92cebd918da04bf95b3ee415821358b5}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Hop\-Channel\-Tx@{Hop\-Channel\-Tx}}
+\index{Hop\-Channel\-Tx@{Hop\-Channel\-Tx}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Hop\-Channel\-Tx}]{\setlength{\rightskip}{0pt plus 5cm}void Hop\-Channel\-Tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga92cebd918da04bf95b3ee415821358b5}
+Hops the transmitter to the next channel 
+
+Definition at line 327 of file radioapi.\-c.
+
+\hypertarget{group___radio_gafd087444df2d9138356991afbc1135a6}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Initialize\-Radio\-A\-P\-I@{Initialize\-Radio\-A\-P\-I}}
+\index{Initialize\-Radio\-A\-P\-I@{Initialize\-Radio\-A\-P\-I}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Initialize\-Radio\-A\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Radio\-A\-P\-I (
+\begin{DoxyParamCaption}
+\item[{U8}]{fhss\-Step\-Size, }
+\item[{{\bf t\-Data\-Rates}}]{data\-Rate}
+\end{DoxyParamCaption}
+)}}\label{group___radio_gafd087444df2d9138356991afbc1135a6}
+
+
+U8 \hyperlink{group___radio_gafd087444df2d9138356991afbc1135a6}{Initialize\-Radio\-A\-P\-I()} 
+
+Initialize the Radio\-A\-P\-I. On return, the radio hardware will be configured and will be asleep.
+
+Parameters\-: none
+
+Description\-: Resets the Radio\-A\-P\-I and any radio related microcontroller resources to a known state. Interrupts are disabled if the function returns k\-Success.
+
+Result\-: k\-Success -\/ Radio is in I\-D\-L\-E R\-E\-A\-D\-Y Mode k\-X\-T\-A\-L\-Error -\/ Cannot start the radio's crystal oscillator k\-S\-P\-I\-Error -\/ S\-P\-I not working k\-Unsupported\-Radio\-Error -\/ Wrong chip version... Doesn't work with our code 
+\begin{DoxyParams}{Parameters}
+{\em data\-Rate} & Channel spacing between F\-H\-S\-S channels Data rate for T\-X and R\-X \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 175 of file radioapi.\-c.
+
+\hypertarget{group___radio_gacbe89d67bb04cbb15e4f12eaf4c7558e}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Listen\-For\-Packet@{Listen\-For\-Packet}}
+\index{Listen\-For\-Packet@{Listen\-For\-Packet}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Listen\-For\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Listen\-For\-Packet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___radio_gacbe89d67bb04cbb15e4f12eaf4c7558e}
+Put radio in receive mode and start listening for an incoming packet \hypertarget{group___radio_ga95f238c518501c80a31b90d5e9f7c4dc}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Resend\-Packet@{Resend\-Packet}}
+\index{Resend\-Packet@{Resend\-Packet}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Resend\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Resend\-Packet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga95f238c518501c80a31b90d5e9f7c4dc}
+Resend the last packer 
+
+Definition at line 140 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga9d15a38533c839197cfc7a84ca016de9}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Send\-Packet@{Send\-Packet}}
+\index{Send\-Packet@{Send\-Packet}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Send\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Send\-Packet (
+\begin{DoxyParamCaption}
+\item[{U\-U32}]{dest\-Address, }
+\item[{{\bf t\-Packet\-Types}}]{packet\-Type, }
+\item[{U8}]{length, }
+\item[{U8 xdata $\ast$}]{tx\-Buffer}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga9d15a38533c839197cfc7a84ca016de9}
+
+
+Method\-Result Send\-Packet(\-U8 length, U8 $\ast$\-S\-D\-U) 
+
+Send a packet using the radio's built in packet engine.
+
+Parameters\-: dest\-Address, unsigned long, destination for this message packet\-Type, Packet\-Types, type of packet (uniack, uninoack, multi) length, unsigned char, length of S\-D\-U S\-D\-U, unsigned char $\ast$, service data unit to send
+
+Description\-: Calling this function will configure the radio to transmit a packet, load the F\-I\-F\-O and packet header information, and start the packet transmission. Once the process is started, this function will return. When the packet has been successfully sent, Radio\-Notify\-Tx\-Packet\-Complete() will be called. If an error occurs sending te packet, Radio\-Notify\-Tx\-Packet\-Error() will be called. If the packet type is uniack, the transmit complete notification happens after an acknoweldgement is received. If the packet type is not uniack, the transmit complete notification will happen once the transmission finishes.
+
+Returns\-: k\-Success 
+\begin{DoxyParams}{Parameters}
+{\em packet\-Type} & Destination M\-A\-C address \\
+\hline
+{\em length} & Packet type \\
+\hline
+{\em tx\-Buffer} & Length of packet S\-D\-U (service data unit or payload) Pointer to buffer containing packet S\-D\-U (service data unit or payload) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 135 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga78b5c441166756d9af91a646e0b2730f}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-Channel@{Set\-Channel}}
+\index{Set\-Channel@{Set\-Channel}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Channel (
+\begin{DoxyParamCaption}
+\item[{U8}]{channel}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga78b5c441166756d9af91a646e0b2730f}
+
+
+U8 \hyperlink{group___radio_ga78b5c441166756d9af91a646e0b2730f}{Set\-Channel(\-U8 Channel)} 
+
+Sets the radio channel.
+
+Parameters\-: channel, U8, Valid channels are 0-\/25
+
+Description; Sets the radio channel. Valid channels are 0-\/25, channel 0=902.\-5\-M\-Hz, channel spacing=1\-M\-Hz
+
+Returns\-: k\-Success if everything is O\-K k\-Invalid\-Value\-Error if the channel number is invalid 
+\begin{DoxyParams}{Parameters}
+{\em channel} & Desired channel. Valid channels are 0-\/24 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 245 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga859abda5461f9370ecfa13165b7088ce}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-Data\-Rate@{Set\-Data\-Rate}}
+\index{Set\-Data\-Rate@{Set\-Data\-Rate}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-Data\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Data\-Rate (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-Data\-Rates}}]{data\-Rate}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga859abda5461f9370ecfa13165b7088ce}
+Change the data rate 
+\begin{DoxyParams}{Parameters}
+{\em data\-Rate} & Data rate for T\-X and R\-X \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 179 of file radioapi.\-c.
+
+\hypertarget{group___radio_gae25f772e91044b5644349d607f3e48a3}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-Hop\-Table@{Set\-Hop\-Table}}
+\index{Set\-Hop\-Table@{Set\-Hop\-Table}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-Hop\-Table}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Hop\-Table (
+\begin{DoxyParamCaption}
+\item[{U8}]{table\-Index}
+\end{DoxyParamCaption}
+)}}\label{group___radio_gae25f772e91044b5644349d607f3e48a3}
+
+
+void \hyperlink{group___radio_gae25f772e91044b5644349d607f3e48a3}{Set\-Hop\-Table(\-U8 table\-Index)} 
+
+Set the hop table
+
+Parameters\-: table\-Index,U8,Determines which table to use.
+
+Description\-: Configures the hop channel table. Up to 255 tables can be generted. The generated table is produced using a L\-F\-S\-R set up for a 26 entry table
+
+Returns\-: Nothing 
+\begin{DoxyParams}{Parameters}
+{\em table\-Index} & Valid tables are 0-\/7 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 260 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga70da240bdf435f229f9eb6045a418dba}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-M\-A\-C\-Address@{Set\-M\-A\-C\-Address}}
+\index{Set\-M\-A\-C\-Address@{Set\-M\-A\-C\-Address}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-M\-A\-C\-Address}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-M\-A\-C\-Address (
+\begin{DoxyParamCaption}
+\item[{U\-U32}]{mac\-Address}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga70da240bdf435f229f9eb6045a418dba}
+
+
+Method\-Result \hyperlink{group___radio_ga70da240bdf435f229f9eb6045a418dba}{Set\-M\-A\-C\-Address(\-U\-U32 mac\-Address)} 
+
+Set the local M\-A\-C address
+
+Parameters\-: mac\-Address,U\-U32,local M\-A\-C Address
+
+Description\-: Set the R\-X check header to the mac address and enable checking on all 4 header bytes. This will filter incoming messages to out address or 0x\-F\-F\-F\-F\-F\-F\-F\-F which is the broadcast address 
+\begin{DoxyParams}{Parameters}
+{\em mac\-Address} & 32 bit M\-A\-C address \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 323 of file radioapi.\-c.
+
+\hypertarget{group___radio_ga34afb92015b77c5e212113dc24c666d9}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-Operating\-Mode@{Set\-Operating\-Mode}}
+\index{Set\-Operating\-Mode@{Set\-Operating\-Mode}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-Operating\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Operating\-Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-Operating\-Modes}}]{mode}
+\end{DoxyParamCaption}
+)}}\label{group___radio_ga34afb92015b77c5e212113dc24c666d9}
+Sets the operating mode of the radio R\-F\-I\-C. 
+\begin{DoxyParams}{Parameters}
+{\em mode} & Desired operating mode \\
+\hline
+\end{DoxyParams}
+\hypertarget{group___radio_gae43e030b3b920054bc17bd3048537a88}{\index{Radio A\-P\-I@{Radio A\-P\-I}!Set\-Tx\-Power@{Set\-Tx\-Power}}
+\index{Set\-Tx\-Power@{Set\-Tx\-Power}!Radio API@{Radio A\-P\-I}}
+\subsubsection[{Set\-Tx\-Power}]{\setlength{\rightskip}{0pt plus 5cm}void Set\-Tx\-Power (
+\begin{DoxyParamCaption}
+\item[{U8}]{power}
+\end{DoxyParamCaption}
+)}}\label{group___radio_gae43e030b3b920054bc17bd3048537a88}
+
+
+U8 \hyperlink{group___radio_gae43e030b3b920054bc17bd3048537a88}{Set\-Tx\-Power(\-U8 power)} 
+
+Sets the radio transmit power. If the R\-F\-I\-C is a 1231\-H, the P\-A Boost will automatically be used for the high power setting.
+
+Parameters\-: power,U8,Power setting. Varies based on chip. Masked with 0x07 prior to writing.
+
+Description\-: Set the transmitter output power. Does not put the chip in T\-X mode, it just sets the T\-X power.
+
+power Si1000/4432 Si4431 ===== ============== ================ 0 1 -\/8 1 2 -\/5 2 5 -\/2 3 8 1 4 11 4 5 14 7 6 17 10 7 20 13
+
+Returns\-: Always returns k\-Success 
+\begin{DoxyParams}{Parameters}
+{\em power} & Desired power level. Bits 6,7,8 turn on P\-A0,P\-A1,P\-A2 respectively. Bits 0-\/4 set power level in 1d\-B increments. See 3.\-4.\-6 in S\-X1231 datasheet \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 284 of file radioapi.\-c.
+

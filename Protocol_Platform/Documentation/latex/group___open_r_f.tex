@@ -1,0 +1,180 @@
+\hypertarget{group___open_r_f}{\section{Open\-R\-F M\-A\-C Layer}
+\label{group___open_r_f}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}
+}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___open_r_f_ga0191e76d54bb003723263a47fa9a7101}{t\-Open\-R\-F\-States} \{ \\*
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a19d8199da79ca4c28eb644052b08f632}{k\-Idle}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101aa20cbba7c3fbef0687f9aad998e94a0e}{k\-Transmitting}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101ad6cfbd04bb1785e5347062ce124ec4dc}{k\-Listening}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101add8280cdb1cba70addb16dee65ca02e6}{k\-Waiting\-For\-Ack}, 
+\\*
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101af96c997a16573b1841aab376fa02c12b}{k\-Ack\-Received}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a2b19c68e5a1e48fcb1227d09382413de}{k\-Ack\-Required}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a6a5907d52deb390eec3e544e19e45b33}{k\-Receiving}, 
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a9b1fddf44bce966b60624b8566da0f5e}{k\-Packet\-Received}, 
+\\*
+\hyperlink{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a1bec80a402b7a72ae776bf8631871643}{k\-Packet\-Transmitted}
+ \}
+\item 
+enum \hyperlink{group___open_r_f_ga75b3ac4a450160131d80d0178b974101}{t\-Transmit\-Errors} \{ \hyperlink{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a09c3a6fa88cf4c80c7516b2d657894a5}{k\-No\-Ack}, 
+\hyperlink{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af83ce339764c3382ff1436195925846d}{k\-Fifo\-Underflow}, 
+\hyperlink{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a02dea8a7ec5fd46f76769a41e827093b}{k\-Fifo\-Overflow}, 
+\hyperlink{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af2cd3231820315500697550960956126}{k\-Undefined}
+ \}
+\item 
+enum \hyperlink{group___open_r_f_gafc8ed4739129ef185b07220c9406f531}{t\-Operating\-Mode} \{ \hyperlink{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531aca42c074332be0f2a766afb361c34f00}{k\-Hopping}, 
+\hyperlink{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531a6ddd6b8071bdfdeacef32e59eed44e3a}{k\-D\-T\-S}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___open_r_f_ga7ada26870c6e5d53afb9e7502d39d841}{Open\-R\-F\-Send\-Packet} (U\-U32 dest\-Address, \hyperlink{group___radio_gaba81c4c5fad7e2e0cef01f8e6c710ecb}{t\-Packet\-Types} packet\-Type, U8 length, U8 xdata $\ast$tx\-Buffer)
+\item 
+void \hyperlink{group___open_r_f_gad11ed9e6c914c9c721219049f9a0d8b4}{Open\-R\-F\-Initialize} (U\-U32 mac\-Address)
+\item 
+void \hyperlink{group___open_r_f_gad0df82f0e17ad95bd30d5b82f59f8a71}{Open\-R\-F\-Listen\-For\-Packet} ()
+\item 
+\hyperlink{group___open_r_f_ga0191e76d54bb003723263a47fa9a7101}{t\-Open\-R\-F\-States} \hyperlink{group___open_r_f_ga66e3018afaf75239d092833054be068f}{Open\-R\-F\-Loop} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the Open\-R\-F M\-A\-C A\-P\-I. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group___open_r_f_ga0191e76d54bb003723263a47fa9a7101}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!t\-Open\-R\-F\-States@{t\-Open\-R\-F\-States}}
+\index{t\-Open\-R\-F\-States@{t\-Open\-R\-F\-States}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{t\-Open\-R\-F\-States}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Open\-R\-F\-States}}}\label{group___open_r_f_ga0191e76d54bb003723263a47fa9a7101}
+Enumerates all of the possible states of the Open\-R\-F stack. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\-Idle@{k\-Idle}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Idle@{k\-Idle}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a19d8199da79ca4c28eb644052b08f632}{k\-Idle}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a19d8199da79ca4c28eb644052b08f632}
+}]Idle state -\/ Lowest radio power state \index{k\-Transmitting@{k\-Transmitting}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Transmitting@{k\-Transmitting}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101aa20cbba7c3fbef0687f9aad998e94a0e}{k\-Transmitting}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101aa20cbba7c3fbef0687f9aad998e94a0e}
+}]Transmitting state \index{k\-Listening@{k\-Listening}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Listening@{k\-Listening}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101ad6cfbd04bb1785e5347062ce124ec4dc}{k\-Listening}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101ad6cfbd04bb1785e5347062ce124ec4dc}
+}]Listening for a packet \index{k\-Waiting\-For\-Ack@{k\-Waiting\-For\-Ack}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Waiting\-For\-Ack@{k\-Waiting\-For\-Ack}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101add8280cdb1cba70addb16dee65ca02e6}{k\-Waiting\-For\-Ack}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101add8280cdb1cba70addb16dee65ca02e6}
+}]Waiting for an ack \index{k\-Ack\-Received@{k\-Ack\-Received}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Ack\-Received@{k\-Ack\-Received}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101af96c997a16573b1841aab376fa02c12b}{k\-Ack\-Received}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101af96c997a16573b1841aab376fa02c12b}
+}]Just received an ack \index{k\-Ack\-Required@{k\-Ack\-Required}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Ack\-Required@{k\-Ack\-Required}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a2b19c68e5a1e48fcb1227d09382413de}{k\-Ack\-Required}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a2b19c68e5a1e48fcb1227d09382413de}
+}]Waiting for an ack \index{k\-Receiving@{k\-Receiving}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Receiving@{k\-Receiving}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a6a5907d52deb390eec3e544e19e45b33}{k\-Receiving}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a6a5907d52deb390eec3e544e19e45b33}
+}]Receiving a packet right now \index{k\-Packet\-Received@{k\-Packet\-Received}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Packet\-Received@{k\-Packet\-Received}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a9b1fddf44bce966b60624b8566da0f5e}{k\-Packet\-Received}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a9b1fddf44bce966b60624b8566da0f5e}
+}]A fully qualified packet has been received \index{k\-Packet\-Transmitted@{k\-Packet\-Transmitted}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Packet\-Transmitted@{k\-Packet\-Transmitted}}\item[{\em 
+\hypertarget{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a1bec80a402b7a72ae776bf8631871643}{k\-Packet\-Transmitted}\label{group___open_r_f_gga0191e76d54bb003723263a47fa9a7101a1bec80a402b7a72ae776bf8631871643}
+}]Last packet is fully transmitted. If the packet required an A\-C\-K, then the A\-C\-K has been received \end{description}
+\end{Desc}
+
+
+Definition at line 39 of file openrf\-\_\-mac.\-h.
+
+\hypertarget{group___open_r_f_gafc8ed4739129ef185b07220c9406f531}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!t\-Operating\-Mode@{t\-Operating\-Mode}}
+\index{t\-Operating\-Mode@{t\-Operating\-Mode}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{t\-Operating\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Operating\-Mode}}}\label{group___open_r_f_gafc8ed4739129ef185b07220c9406f531}
+Enumerates Open\-R\-F operating modes \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\-Hopping@{k\-Hopping}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Hopping@{k\-Hopping}}\item[{\em 
+\hypertarget{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531aca42c074332be0f2a766afb361c34f00}{k\-Hopping}\label{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531aca42c074332be0f2a766afb361c34f00}
+}]Frequency hopping spread spectrum \index{k\-D\-T\-S@{k\-D\-T\-S}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-D\-T\-S@{k\-D\-T\-S}}\item[{\em 
+\hypertarget{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531a6ddd6b8071bdfdeacef32e59eed44e3a}{k\-D\-T\-S}\label{group___open_r_f_ggafc8ed4739129ef185b07220c9406f531a6ddd6b8071bdfdeacef32e59eed44e3a}
+}]Single frequency operation \end{description}
+\end{Desc}
+
+
+Definition at line 77 of file openrf\-\_\-mac.\-h.
+
+\hypertarget{group___open_r_f_ga75b3ac4a450160131d80d0178b974101}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!t\-Transmit\-Errors@{t\-Transmit\-Errors}}
+\index{t\-Transmit\-Errors@{t\-Transmit\-Errors}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{t\-Transmit\-Errors}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf t\-Transmit\-Errors}}}\label{group___open_r_f_ga75b3ac4a450160131d80d0178b974101}
+Enumerates all possible errors that can happen in the transmit process \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\-No\-Ack@{k\-No\-Ack}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-No\-Ack@{k\-No\-Ack}}\item[{\em 
+\hypertarget{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a09c3a6fa88cf4c80c7516b2d657894a5}{k\-No\-Ack}\label{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a09c3a6fa88cf4c80c7516b2d657894a5}
+}]An ack was required but none was received \index{k\-Fifo\-Underflow@{k\-Fifo\-Underflow}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Fifo\-Underflow@{k\-Fifo\-Underflow}}\item[{\em 
+\hypertarget{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af83ce339764c3382ff1436195925846d}{k\-Fifo\-Underflow}\label{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af83ce339764c3382ff1436195925846d}
+}]The F\-I\-F\-O underflowed, meaning more bytes were extracted than were put in \index{k\-Fifo\-Overflow@{k\-Fifo\-Overflow}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Fifo\-Overflow@{k\-Fifo\-Overflow}}\item[{\em 
+\hypertarget{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a02dea8a7ec5fd46f76769a41e827093b}{k\-Fifo\-Overflow}\label{group___open_r_f_gga75b3ac4a450160131d80d0178b974101a02dea8a7ec5fd46f76769a41e827093b}
+}]The F\-I\-F\-O overflowed, meaning too many bytes were put into the F\-I\-F\-O \index{k\-Undefined@{k\-Undefined}!Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}}\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!k\-Undefined@{k\-Undefined}}\item[{\em 
+\hypertarget{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af2cd3231820315500697550960956126}{k\-Undefined}\label{group___open_r_f_gga75b3ac4a450160131d80d0178b974101af2cd3231820315500697550960956126}
+}]Undefined error \end{description}
+\end{Desc}
+
+
+Definition at line 63 of file openrf\-\_\-mac.\-h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group___open_r_f_gad11ed9e6c914c9c721219049f9a0d8b4}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!Open\-R\-F\-Initialize@{Open\-R\-F\-Initialize}}
+\index{Open\-R\-F\-Initialize@{Open\-R\-F\-Initialize}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{Open\-R\-F\-Initialize}]{\setlength{\rightskip}{0pt plus 5cm}void Open\-R\-F\-Initialize (
+\begin{DoxyParamCaption}
+\item[{U\-U32}]{mac\-Address}
+\end{DoxyParamCaption}
+)}}\label{group___open_r_f_gad11ed9e6c914c9c721219049f9a0d8b4}
+Initialize the Open\-R\-F stack 
+\begin{DoxyParams}{Parameters}
+{\em mac\-Address} & Local M\-A\-C address \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 122 of file openrf\-\_\-mac.\-c.
+
+\hypertarget{group___open_r_f_gad0df82f0e17ad95bd30d5b82f59f8a71}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!Open\-R\-F\-Listen\-For\-Packet@{Open\-R\-F\-Listen\-For\-Packet}}
+\index{Open\-R\-F\-Listen\-For\-Packet@{Open\-R\-F\-Listen\-For\-Packet}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{Open\-R\-F\-Listen\-For\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Open\-R\-F\-Listen\-For\-Packet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___open_r_f_gad0df82f0e17ad95bd30d5b82f59f8a71}
+Start listening for a packet 
+
+Definition at line 134 of file openrf\-\_\-mac.\-c.
+
+\hypertarget{group___open_r_f_ga66e3018afaf75239d092833054be068f}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!Open\-R\-F\-Loop@{Open\-R\-F\-Loop}}
+\index{Open\-R\-F\-Loop@{Open\-R\-F\-Loop}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{Open\-R\-F\-Loop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-Open\-R\-F\-States} Open\-R\-F\-Loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{group___open_r_f_ga66e3018afaf75239d092833054be068f}
+This needs to be called once per main loop. All internal Open\-R\-F processing happens in here. \begin{DoxyReturn}{Returns}
+Current state of the Open\-R\-F stack. 
+\end{DoxyReturn}
+
+
+Definition at line 141 of file openrf\-\_\-mac.\-c.
+
+\hypertarget{group___open_r_f_ga7ada26870c6e5d53afb9e7502d39d841}{\index{Open\-R\-F M\-A\-C Layer@{Open\-R\-F M\-A\-C Layer}!Open\-R\-F\-Send\-Packet@{Open\-R\-F\-Send\-Packet}}
+\index{Open\-R\-F\-Send\-Packet@{Open\-R\-F\-Send\-Packet}!OpenRF MAC Layer@{Open\-R\-F M\-A\-C Layer}}
+\subsubsection[{Open\-R\-F\-Send\-Packet}]{\setlength{\rightskip}{0pt plus 5cm}void Open\-R\-F\-Send\-Packet (
+\begin{DoxyParamCaption}
+\item[{U\-U32}]{dest\-Address, }
+\item[{{\bf t\-Packet\-Types}}]{packet\-Type, }
+\item[{U8}]{length, }
+\item[{U8 xdata $\ast$}]{tx\-Buffer}
+\end{DoxyParamCaption}
+)}}\label{group___open_r_f_ga7ada26870c6e5d53afb9e7502d39d841}
+Send a packet 
+\begin{DoxyParams}{Parameters}
+{\em packet\-Type} & Destination M\-A\-C address \\
+\hline
+{\em length} & Type of packet \\
+\hline
+{\em tx\-Buffer} & Length of S\-D\-U Buffer containing S\-D\-U \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 108 of file openrf\-\_\-mac.\-c.
+

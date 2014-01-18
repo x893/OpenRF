@@ -1,0 +1,161 @@
+\hypertarget{group___microcontroller}{\section{Microcontroller A\-P\-I}
+\label{group___microcontroller}\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}}
+}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_time_of_day}{Time\-Of\-Day}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{group___microcontroller_gacdad6d81b9a94402ce3979d531ae4f40}{Interrupt\-Types} \{ \hyperlink{group___microcontroller_ggacdad6d81b9a94402ce3979d531ae4f40ab6c06d9faecfce59a7da45b7944780bd}{N\-I\-R\-Q} =0
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{group___microcontroller_ga5f2da15600290897285c56ec4c61c845}{Write\-S\-P\-I\-Multiple} (U8 reg, U8 count, U8 $\ast$buffer) reentrant
+\item 
+void \hyperlink{group___microcontroller_gabdc71036637d954e4696a6800f3e64be}{Initialize\-Micro\-A\-P\-I} (void)
+\item 
+U8 \hyperlink{group___microcontroller_gad7f37d8605b8b3ce2e6915c969f17247}{Read\-S\-P\-I} (U8 reg) reentrant
+\item 
+void \hyperlink{group___microcontroller_gab87fac7c7e38cca5b160e0e975ed7664}{Write\-S\-P\-I} (U8 reg, U8 data) reentrant
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+U8 \hyperlink{group___microcontroller_gaa4f95286ba64d87b1d69c7bf2ce4db6d}{Time\-Of\-Day\-::hour}
+\item 
+U8 \hyperlink{group___microcontroller_ga21ec20909874235c6b6962ce326411d9}{Time\-Of\-Day\-::minute}
+\item 
+U8 \hyperlink{group___microcontroller_ga98c2745c67f408461639d09e76db81b5}{Time\-Of\-Day\-::second}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the microcontroller A\-P\-I for the R\-L78 micro. 
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{group___microcontroller_gacdad6d81b9a94402ce3979d531ae4f40}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!Interrupt\-Types@{Interrupt\-Types}}
+\index{Interrupt\-Types@{Interrupt\-Types}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{Interrupt\-Types}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Interrupt\-Types}}}\label{group___microcontroller_gacdad6d81b9a94402ce3979d531ae4f40}
+Defines all of the different interrupt types that are all available. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-I\-R\-Q@{N\-I\-R\-Q}!Microcontroller A\-P\-I@{Microcontroller A\-P\-I}}\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!N\-I\-R\-Q@{N\-I\-R\-Q}}\item[{\em 
+\hypertarget{group___microcontroller_ggacdad6d81b9a94402ce3979d531ae4f40ab6c06d9faecfce59a7da45b7944780bd}{N\-I\-R\-Q}\label{group___microcontroller_ggacdad6d81b9a94402ce3979d531ae4f40ab6c06d9faecfce59a7da45b7944780bd}
+}]This is the Radio interrupt \end{description}
+\end{Desc}
+
+
+Definition at line 31 of file microapi.\-h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{group___microcontroller_gabdc71036637d954e4696a6800f3e64be}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!Initialize\-Micro\-A\-P\-I@{Initialize\-Micro\-A\-P\-I}}
+\index{Initialize\-Micro\-A\-P\-I@{Initialize\-Micro\-A\-P\-I}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{Initialize\-Micro\-A\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}void Initialize\-Micro\-A\-P\-I (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{group___microcontroller_gabdc71036637d954e4696a6800f3e64be}
+This function initializes the A\-P\-I. When done, the micro is in its post reset default state. \begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Definition at line 34 of file microapi.\-c.
+
+\hypertarget{group___microcontroller_gad7f37d8605b8b3ce2e6915c969f17247}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!Read\-S\-P\-I@{Read\-S\-P\-I}}
+\index{Read\-S\-P\-I@{Read\-S\-P\-I}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{Read\-S\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}U8 Read\-S\-P\-I (
+\begin{DoxyParamCaption}
+\item[{U8}]{reg}
+\end{DoxyParamCaption}
+)}}\label{group___microcontroller_gad7f37d8605b8b3ce2e6915c969f17247}
+This function reads one byte from the S\-P\-I from a given location \begin{DoxyReturn}{Returns}
+Byte that was read. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register (location) to read \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file microapi.\-c.
+
+\hypertarget{group___microcontroller_gab87fac7c7e38cca5b160e0e975ed7664}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!Write\-S\-P\-I@{Write\-S\-P\-I}}
+\index{Write\-S\-P\-I@{Write\-S\-P\-I}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{Write\-S\-P\-I}]{\setlength{\rightskip}{0pt plus 5cm}void Write\-S\-P\-I (
+\begin{DoxyParamCaption}
+\item[{U8}]{reg, }
+\item[{U8}]{data}
+\end{DoxyParamCaption}
+)}}\label{group___microcontroller_gab87fac7c7e38cca5b160e0e975ed7664}
+Write a single byte to a specific location on the S\-P\-I port \begin{DoxyReturn}{Returns}
+None 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register \\
+\hline
+{\em data} & Byte to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file microapi.\-c.
+
+\hypertarget{group___microcontroller_ga5f2da15600290897285c56ec4c61c845}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!Write\-S\-P\-I\-Multiple@{Write\-S\-P\-I\-Multiple}}
+\index{Write\-S\-P\-I\-Multiple@{Write\-S\-P\-I\-Multiple}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{Write\-S\-P\-I\-Multiple}]{\setlength{\rightskip}{0pt plus 5cm}void Write\-S\-P\-I\-Multiple (
+\begin{DoxyParamCaption}
+\item[{U8}]{reg, }
+\item[{U8}]{count, }
+\item[{U8 $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}\label{group___microcontroller_ga5f2da15600290897285c56ec4c61c845}
+This function writes multiple bytes to a specific location on the S\-P\-I port \begin{DoxyReturn}{Returns}
+none. 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Register to write \\
+\hline
+{\em count} & Number of bytes to write \\
+\hline
+{\em buffer} & Pointer to buffer containing data to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file microapi.\-c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{group___microcontroller_gaa4f95286ba64d87b1d69c7bf2ce4db6d}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!hour@{hour}}
+\index{hour@{hour}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{hour}]{\setlength{\rightskip}{0pt plus 5cm}U8 Time\-Of\-Day\-::hour}}\label{group___microcontroller_gaa4f95286ba64d87b1d69c7bf2ce4db6d}
+Hour 
+
+Definition at line 39 of file microapi.\-h.
+
+\hypertarget{group___microcontroller_ga21ec20909874235c6b6962ce326411d9}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!minute@{minute}}
+\index{minute@{minute}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{minute}]{\setlength{\rightskip}{0pt plus 5cm}U8 Time\-Of\-Day\-::minute}}\label{group___microcontroller_ga21ec20909874235c6b6962ce326411d9}
+Minute 
+
+Definition at line 41 of file microapi.\-h.
+
+\hypertarget{group___microcontroller_ga98c2745c67f408461639d09e76db81b5}{\index{Microcontroller A\-P\-I@{Microcontroller A\-P\-I}!second@{second}}
+\index{second@{second}!Microcontroller API@{Microcontroller A\-P\-I}}
+\subsubsection[{second}]{\setlength{\rightskip}{0pt plus 5cm}U8 Time\-Of\-Day\-::second}}\label{group___microcontroller_ga98c2745c67f408461639d09e76db81b5}
+Second 
+
+Definition at line 43 of file microapi.\-h.
+
