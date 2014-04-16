@@ -1,6 +1,6 @@
 #include "microapi.h"
-#include "..\..\..\SourceCode\OpenRF_MAC\openrf_mac.h"
-#include "..\Utilities\atProcessor.h"
+#include "../../../SourceCode/OpenRF_MAC/openrf_mac.h"
+#include "../../../SourceCode/Utility/atProcessor.h"
 
 #define ACK		0x06
 #define NACK	0x15

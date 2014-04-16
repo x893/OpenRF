@@ -13,7 +13,7 @@ U8 foundT = 0;
 U8 _commandCount;
 U8 _maxCommandSize;
 U8 _bufCount = 0;
-U8 *_commands[32];
+const char *_commands[32];
 
 void ProcessATCommand(void);
 
@@ -22,7 +22,7 @@ tAtStates ATGetState()
 	return _atState;
 }
 
-void ATInitialize(U8 *commands[], U8 commandCount, tCallback callback)
+void ATInitialize(const char *commands[], U8 commandCount, tCallback callback)
 {
 	U8 i;
 	_atState = kDisabled;
@@ -88,11 +88,11 @@ void ATProcess()
 	}
 }
 
-U8 Compare(U8 *cmdToCompare)
+U8 Compare(const char *cmdToCompare)
 {
 	U8 bp = 0;
 	U8 cnt = 0;
-	U8 *ptr = cmdToCompare;
+	const char *ptr = cmdToCompare;
 	// cycle through string and compare to buffer
 	while (*ptr != 0)
 	{
