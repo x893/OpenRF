@@ -12,14 +12,14 @@
       <ToolsetName>ARM-ADS</ToolsetName>
       <TargetOption>
         <TargetCommonOption>
-          <Device>EFM32G880F128</Device>
+          <Device>EFM32GG990F1024</Device>
           <Vendor>Energy Micro</Vendor>
-          <Cpu>IROM(0x00000000,0x20000) IRAM(0x20000000,0x4000) CPUTYPE("Cortex-M3") CLOCK(32000000) ELITTLE</Cpu>
+          <Cpu>IROM(0x00000000,0x100000) IRAM(0x20000000,0x20000) CPUTYPE("Cortex-M3") CLOCK(48000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
-          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0EFM32 -FS00 -FL020000 -FP0($$Device:EFM32G880F128$Flash\EFM32.FLM))</FlashDriverDll>
-          <DeviceId>5005</DeviceId>
-          <RegisterFile>$$Device:EFM32G880F128$Device\Include\em_device.h</RegisterFile>
+          <FlashDriverDll>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0EFM32GG -FS00 -FL0100000 -FP0($$Device:EFM32GG990F1024$Flash\EFM32GG.FLM))</FlashDriverDll>
+          <DeviceId>5970</DeviceId>
+          <RegisterFile>$$Device:EFM32GG990F1024$Device\Include\em_device.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -29,7 +29,7 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:EFM32G880F128$SVD\EFM32G880F128.svd</SFDFile>
+          <SFDFile>$$Device:EFM32GG990F1024$SVD\EFM32GG990F1024.svd</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
@@ -138,6 +138,8 @@
             <RestoreMemoryDisplay>1</RestoreMemoryDisplay>
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreTracepoints>1</RestoreTracepoints>
             <RestoreTracepoints>1</RestoreTracepoints>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
@@ -274,12 +276,12 @@
               <IRAM>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x20000</Size>
               </IRAM>
               <IROM>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x100000</Size>
               </IROM>
               <XRAM>
                 <Type>0</Type>
@@ -304,7 +306,7 @@
               <OCR_RVCT4>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x20000</Size>
+                <Size>0x100000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -329,7 +331,7 @@
               <OCR_RVCT9>
                 <Type>0</Type>
                 <StartAddress>0x20000000</StartAddress>
-                <Size>0x4000</Size>
+                <Size>0x20000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -353,11 +355,13 @@
             <wLevel>0</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
+            <uC99>0</uC99>
+            <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>EFM32G880F128 RADIO_SX1231</Define>
+              <Define>MICRO_IS_EFM32 RADIO_SX1231</Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>..\..\SourceCode\MicrocontrollerAPI\EFM32</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -369,6 +373,7 @@
             <SwStkChk>0</SwStkChk>
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
+            <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -385,6 +390,7 @@
             <useFile>0</useFile>
             <TextAddressRange>0x00000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
+            <pXoBase></pXoBase>
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
@@ -403,6 +409,26 @@
               <FileType>1</FileType>
               <FilePath>.\App\OpenRF_CM3_RFM69HW.c</FilePath>
             </File>
+            <File>
+              <FileName>atProcessor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SourceCode\Utility\atProcessor.c</FilePath>
+            </File>
+            <File>
+              <FileName>openrf_mac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SourceCode\OpenRF_MAC\openrf_mac.c</FilePath>
+            </File>
+            <File>
+              <FileName>radioapi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SourceCode\Radio\SX1231\radioapi.c</FilePath>
+            </File>
+            <File>
+              <FileName>microapi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\SourceCode\MicrocontrollerAPI\EFM32\microapi.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -412,14 +438,19 @@
           <GroupName>::Device</GroupName>
           <Files>
             <File>
-              <FileName>startup_efm32g.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>RTE\Device\EFM32G880F128\startup_efm32g.s</FilePath>
+              <FileName>RTE_Device.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>RTE\Device\EFM32GG990F1024\RTE_Device.h</FilePath>
             </File>
             <File>
-              <FileName>system_efm32g.c</FileName>
+              <FileName>startup_efm32gg.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>RTE\Device\EFM32GG990F1024\startup_efm32gg.s</FilePath>
+            </File>
+            <File>
+              <FileName>system_efm32gg.c</FileName>
               <FileType>1</FileType>
-              <FilePath>RTE\Device\EFM32G880F128\system_efm32g.c</FilePath>
+              <FilePath>RTE\Device\EFM32GG990F1024\system_efm32gg.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -436,8 +467,8 @@
           <targetInfo name="OpenRF_EFM32_RFM69HW"/>
         </targetInfos>
       </component>
-      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.0.1" Dname="EFM32G880F128" condition="EFM32G CMSIS Device">
-        <package name="EFM32Gxxx_DFP" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.0"/>
+      <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="EFM32GG CMSIS Device">
+        <package name="EFM32GGxxx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.2"/>
         <targetInfos>
           <targetInfo name="OpenRF_EFM32_RFM69HW"/>
         </targetInfos>
@@ -445,17 +476,37 @@
     </components>
     <files>
       <file attr="config" category="source" name="Device\Source\ARM\startup_efm32g.s">
-        <instance index="0">RTE\Device\EFM32G880F128\startup_efm32g.s</instance>
+        <instance index="0" removed="1">RTE\Device\EFM32G880F128\startup_efm32g.s</instance>
         <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.0.1" Dname="EFM32G880F128" condition="EFM32G CMSIS Device"/>
         <package name="EFM32Gxxx_DFP" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="Device\Source\system_efm32g.c">
+        <instance index="0" removed="1">RTE\Device\EFM32G880F128\system_efm32g.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.0.1" Dname="EFM32G880F128" condition="EFM32G CMSIS Device"/>
+        <package name="EFM32Gxxx_DFP" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.0"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="RTE_Driver\Config\RTE_Device.h">
+        <instance index="0">RTE\Device\EFM32GG990F1024\RTE_Device.h</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="EFM32GG CMSIS Device"/>
+        <package name="EFM32GGxxx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.2"/>
         <targetInfos>
           <targetInfo name="OpenRF_EFM32_RFM69HW"/>
         </targetInfos>
       </file>
-      <file attr="config" category="source" name="Device\Source\system_efm32g.c">
-        <instance index="0">RTE\Device\EFM32G880F128\system_efm32g.c</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.0.1" Dname="EFM32G880F128" condition="EFM32G CMSIS Device"/>
-        <package name="EFM32Gxxx_DFP" schemaVersion="1.0" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.0"/>
+      <file attr="config" category="source" name="Device\Source\ARM\startup_efm32gg.s">
+        <instance index="0">RTE\Device\EFM32GG990F1024\startup_efm32gg.s</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="EFM32GG CMSIS Device"/>
+        <package name="EFM32GGxxx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.2"/>
+        <targetInfos>
+          <targetInfo name="OpenRF_EFM32_RFM69HW"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Device\Source\system_efm32gg.c">
+        <instance index="0">RTE\Device\EFM32GG990F1024\system_efm32gg.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.0.0" condition="EFM32GG CMSIS Device"/>
+        <package name="EFM32GGxxx_DFP" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="1.0.2"/>
         <targetInfos>
           <targetInfo name="OpenRF_EFM32_RFM69HW"/>
         </targetInfos>

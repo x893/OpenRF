@@ -1,160 +1,104 @@
-/*************************************************************************************
-**																					**
-**	radioapi.h			Si1000 RFIC													**
-** 																					**
-**************************************************************************************
-**																					**
-** Written By:	Steve Montgomery													**
-**				Digital Six Laboratories LLC										**
-** (c)2012 Digital Six Labs, All rights reserved									**
-**																					**
-**************************************************************************************/
-//
-// Revision History
-//
-// Revision		Date	Reviser		Description
-// ===================================================================================
-// ===================================================================================
-
-/*! \addtogroup Radio Radio API
- *
- * \ingroup PortedAPIs
- * @{
- * \details This is the radio API for the SX1231H radio.
- *
- */
 #ifndef RADIOAPI_DEFS_H
 #define RADIOAPI_DEFS_H
 
-// these defines determine which micro controller api is used
-//#define MICRO_IS_SI1000
-#define MICRO_IS_RL78
-// #define MICRO_IS_RX62N
-
+#ifdef MICRO_IS_EFM32
+	#include "..\..\MicrocontrollerAPI\EFM32\microapi.h"
+	#include "sx1231_defs.h"
+#else
 #ifdef MICRO_IS_SI1000
-#include "..\..\MicrocontrollerAPI\Si1000\microapi.h"
-#include "si1000_defs.h"
-#endif
-
+	#include "..\..\MicrocontrollerAPI\Si1000\microapi.h"
+	#include "si1000_defs.h"
+#else
 #ifdef MICRO_IS_RL78
-#include "..\..\MicrocontrollerAPI\RL78\microapi.h"
-#include "sx1231_defs.h"
+	#include "..\..\MicrocontrollerAPI\RL78\microapi.h"
+	#include "sx1231_defs.h"
 #endif
-
+#endif
+#endif
 
 enum
 {
 	kListenTimer,
 	MAXTIMERS
 };
+
 #define FHSSCHANNELS 50
 
-/*! \details Initialization structure for RadioAPI
- *
+/*!
+ *	\details Initialization structure for RadioAPI
  */
 typedef struct
 {
-	UU32 MacAddress; /*! MAC address of radio */
-	U8 HopTable; /*! Hop table to use */
-	U16 FhssStepSize; /*! Channel spacing between FHSS channels in khz */
-	U8 GausianEnabled; /*! Non zero if GFSK is to be used.  Bt will be 0.5 for GFSK and 1.0 for FSK*/
-	UU32 NetworkId; /*! Network id  */
+	UU32 MacAddress;	/*! MAC address of radio */
+	U8 HopTable;		/*! Hop table to use */
+	U16 FhssStepSize;	/*! Channel spacing between FHSS channels in khz */
+	U8 GausianEnabled;	/*! Non zero if GFSK is to be used.  Bt will be 0.5 for GFSK and 1.0 for FSK*/
+	UU32 NetworkId;		/*! Network id  */
 } tRadioInitialization;
 
-/*! \details Defines all of the different packet types that are available
+/*!
+ *	\details Defines all of the different packet types that are available
  */
 typedef enum
 {
-	/*! Unicast packet (point to point) with acknowledgment */
-	kUniAckPacketType=0,
-	/*! Unicast packet(point to point) without acknowledgment */
-	kUniNoAckPacketType,
-	/*! Multicast packet.  This is a broadcast packet to everyone on the network */
-	kMulticastPacketType,
-	/*! Acknowledgment packet.  This is sent in response to a UNIACK packet	 */
-	kAckPacketType,
-	/*! Unicast packet (point to point) with acknowledgment  with hopping*/
-	kHoppingUniAckPacketType=128,
-	/*! Unicast packet(point to point) without acknowledgment with hopping*/
-	kHoppingUniNoAckPacketType,
-	/*! Multicast packet.  This is a broadcast packet to everyone on the network with hopping*/
-	kHoppingMulticastPacketType,
-	/*! Acknowledgment packet.  This is sent in response to a UNIACK packet	 with hopping*/
-	kHoppingAckPacketType,
+	kUniAckPacketType = 0,	/*! Unicast packet (point to point) with acknowledgment */
+	kUniNoAckPacketType,	/*! Unicast packet(point to point) without acknowledgment */
+	kMulticastPacketType,	/*! Multicast packet.  This is a broadcast packet to everyone on the network */
+	kAckPacketType,			/*! Acknowledgment packet.  This is sent in response to a UNIACK packet	 */
+	kHoppingUniAckPacketType = 128,	/*! Unicast packet (point to point) with acknowledgment  with hopping*/
+	kHoppingUniNoAckPacketType,		/*! Unicast packet(point to point) without acknowledgment with hopping*/
+	kHoppingMulticastPacketType,	/*! Multicast packet.  This is a broadcast packet to everyone on the network with hopping*/
+	kHoppingAckPacketType,			/*! Acknowledgment packet.  This is sent in response to a UNIACK packet	 with hopping*/
 } tPacketTypes;
 
-/*! \details Enumerates the different listen modes available
- *
+/*!
+ *	\details Enumerates the different listen modes available
  */
 typedef enum
 {
-	/*! Listen on the current channel until a packet is received or the mode is changed via OpenRFSendPacket or OpenRFSleep */
-	kContinuous=1,
-	/*! Listen for 48-bit periods on each channel in turn until a packet is received or the mode is changed via OpenRFSendPacket or OpenRFSleep */
-	kContinuousScan=129,
-	/*! Listen for 48-bit periods on the current channel then sleep for the remainder of the sleep period.  Exits on packet reception or mode change. */
-	kPeriodic=2,
-	/*! Listen for 48-bit periods on the each channel then sleep for the remainder of the sleep period.  Exits on packet reception or mode change. */
-	kPeriodicScan=130
+	kContinuous = 1,		/*! Listen on the current channel until a packet is received or the mode is changed via OpenRFSendPacket or OpenRFSleep */
+	kContinuousScan = 129,	/*! Listen for 48-bit periods on each channel in turn until a packet is received or the mode is changed via OpenRFSendPacket or OpenRFSleep */
+	kPeriodic = 2,			/*! Listen for 48-bit periods on the current channel then sleep for the remainder of the sleep period.  Exits on packet reception or mode change. */
+	kPeriodicScan = 130		/*! Listen for 48-bit periods on the each channel then sleep for the remainder of the sleep period.  Exits on packet reception or mode change. */
 } tListenModes;
-/*! \details Defines all of the "over the air" data rates that are available.  Both standard and rounded rates are available
+
+/*!
+ *	\details Defines all of the "over the air" data rates that are available.  Both standard and rounded rates are available
  */
 
 typedef enum
 {
-	/*! 1200 BAUD */
-	k1200BPS,
-	/*! 2400 BAUD */
-	k2400BPS,
-	/*! 4800 BAUD */
-	k4800BPS,
-	/*! 9600 BAUD */
-	k9600BPS,
-	/*! 19200 BAUD */
-	k19200BPS,
-	/*! 38400 BAUD */
-	k38400BPS,
-	/*! 57600 BAUD */
-	k57600BPS,
-	/*! 76800 BAUD */
-	k76800BPS,
-	/*! 153600 BAUD */
-	k153600BPS,
-	/*! 12.5K BAUD */
-	k12_5KBPS,
-	/*! 25K BAUD */
-	k25KBPS,
-	/*! 50K BAUD */
-	k50KBPS,
-	/*! 100K BAUD */
-	k100KBPS,
-	/*! 150K BAUD */
-	k150KBPS,
-	/*! 200K BAUD */
-	k200KBPS,
-	/*! 250K BAUD */
-	k250KBPS,
-	/*! 300K BAUD */
-	k300KBPS
+	k1200BPS,		/*! 1200 BAUD */
+	k2400BPS,		/*! 2400 BAUD */
+	k4800BPS,		/*! 4800 BAUD */
+	k9600BPS,		/*! 9600 BAUD */
+	k19200BPS,		/*! 19200 BAUD */
+	k38400BPS,		/*! 38400 BAUD */
+	k57600BPS,		/*! 57600 BAUD */
+	k76800BPS,		/*! 76800 BAUD */
+	k153600BPS,		/*! 153600 BAUD */
+	k12_5KBPS,		/*! 12.5K BAUD */
+	k25KBPS,		/*! 25K BAUD */
+	k50KBPS,		/*! 50K BAUD */
+	k100KBPS,		/*! 100K BAUD */
+	k150KBPS,		/*! 150K BAUD */
+	k200KBPS,		/*! 200K BAUD */
+	k250KBPS,		/*! 250K BAUD */
+	k300KBPS		/*! 300K BAUD */
 } tDataRates;
 
 /*! \details Defines all of the different radio modes that are available
  */
 typedef enum
 {
-	/*! All blocks disabled */
-	kSleepMode,
-	/*! Top regulator and crystal osc enabled */
-	kStandbyMode,
-	/*! Frequency synthesizer is enabled */
-	kFSMode,
-	/*! Frequency synthesizer and transmitter are enabled */
-	kTransmitMode,
-	/* Frequency synthesizer and receiver are enabled */
-	kReceiveMode,
-	/* Periodically listens for trasnmitter, staying in Standby mode most of the time */
-	kListenMode
+	kSleepMode,		/*! All blocks disabled */
+	kStandbyMode,	/*! Top regulator and crystal osc enabled */
+	kFSMode,		/*! Frequency synthesizer is enabled */
+	kTransmitMode,	/*! Frequency synthesizer and transmitter are enabled */
+	kReceiveMode,	/* Frequency synthesizer and receiver are enabled */
+	kListenMode		/* Periodically listens for trasnmitter, staying in Standby mode most of the time */
 } tOperatingModes;
+
 enum
 {
 	kInterruptP0,
@@ -163,7 +107,7 @@ enum
 	kInterruptP3,
 	kInterruptP4,
 	kInterruptP5,
-	kInterruptK0=0x80,
+	kInterruptK0 = 0x80,
 	kInterruptK1,
 	kInterruptK2,
 	kInterruptK3
@@ -184,7 +128,7 @@ U8 RadioSendPacket(
 		tPacketTypes packetType	/*! Packet type */,
 		U8 length			/*! Length of packet SDU (service data unit or payload) */,
 		U8 *SDU				/*! Pointer to buffer containing packet SDU (service data unit or payload) */,
-		UU16 preambleCount	/*! Preamble count in bits  */,
+		U16 preambleCount	/*! Preamble count in bits  */,
 		U8 blocking			/*! 1=make this a blocking call, 0=use interrupts instead*/
 	);
 

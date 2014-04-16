@@ -4,8 +4,8 @@
 #include "TypeDefinitions.h"
 #include "iodefine.h"
 
-typedef enum
-{	/*!This is the Radio interrupt */
+typedef enum {
+	/*! This is the Radio interrupt */
 	NIRQ = 0
 } InterruptTypes;
 
@@ -104,41 +104,15 @@ void ReadCharSPIMultiple2(
 		U8 *receiveBuffer	/*! Pointer to buffer to hold received bytes */
 	) reentrant;
 
-/*! \details Read a character from the receive buffer for UART0
- *  \return Character from buffer if available, null if not
- */
-U8 ReadCharUART0(void);
-
-/*! \details Write a character to the transmit buffer for UART0
- *  \return None
- */
-void WriteCharUART0(U8 charToWrite /*! Character to write to buffer */);
-
-/*! \details Get the number of characters in UART0 receive buffer
- *  \return Count
- */
-U8 BufferCountUART0(void);
-
-/*! \details Peek a byte out of the buffer without advancing the pointer
- *  \return Byte if a byte is available, 0 if a byte is not.  Note that 0 can be a valid byte in the buffer,so do not use PeekByte to determine if a byte exists.
- */
-U8 Uart0PeekByte(void);
-/*! \details Peek a series of bytes out of the buffer without advancing the pointer
- *
- */
-
-void Uart0PeekBytes(U8 count	/*! Number of bytes to peek */,
-					U8 *buffer	/*! Buffer to put peeked bytes into */);
-
 /*! \details Read a character from the receive buffer for UART1
  *  \return Character from buffer if available, null if not
  */
 U8 ReadCharUART1(void);
 
-/*! \details Write a character to the transmit buffer for UART0
+/*! \details Write a character to the transmit buffer for UART1
  *  \return None
  */
-void WriteCharUART1(U8 charToWrite/*! Character to write to buffer */);
+void WriteCharUART1(U8 charToWrite /*! Character to write to buffer */);
 
 /*! \details Get the number of characters in UART1 receive buffer
  *  \return Count
@@ -150,11 +124,6 @@ U8 BufferCountUART1(void);
  */
 U8 Uart1PeekByte(void);
 
-/*! \details Peek a series of bytes out of the buffer without advancing the pointer
- *
- */
-void Uart1PeekBytes(U8 count/*! Number of bytes to peek */,
-					U8 *buffer/*! Buffer to put peeked bytes into */);
 /*! \details Set the baud rate of UART1
  *
  */
@@ -168,7 +137,7 @@ U8 GetUART1BaudRate(void);
 /*! \details Reads one char(byte) from a specified address on the IIC port
  *  \return Character read
  */
-U8 ReadCharIIC(U8 address/*! Address to read from */);
+U8 ReadCharIIC(U8 address /*! Address to read from */);
 
 /*! \details Reads specified number of characters from a specified starting address
  *  \return 0 if successful, >=1 if not.l
@@ -366,14 +335,10 @@ void DisableIntP1(void);
 
 #define INITIALIZEDVALUE 0x55
 
-#define DI()	__disable_irq()
-#define EI()	__enable_irq()
 #define NOP()	__nop()
 
-// Disable interrupts
-#define DisableInterrupts	DI()
-// Enable interrupts
-#define EnableInterrupts	EI()
+#define DisableInterrupts	__disable_irq()
+#define EnableInterrupts	__enable_irq()
 
 // Get the interrupt pin status for the radio
 #define NIRQStatus IRQ
@@ -420,31 +385,28 @@ extern void Handle1SecInterrupt(void);
 // ******************************************************************************************************************************
 #define KEY_WAITTIME	(8U)	/* Wait 250 */
 
-#define NSSpin			P12_bit.no0
-#define NSS2pin			P14_bit.no7
-#define pinPowerLock	P2_bit.no3
-
-#define pinDIO0 P7_bit.no0
-#define pinDIO1 P7_bit.no1
-#define pinDIO2 P7_bit.no2
-#define pinDIO3 P7_bit.no3
-#define pinDIO4 P13_bit.no7
-#define pinDIO5 P5_bit.no0
-#define pinDIO6 P1_bit.no6
-#define pinDIO7 P1_bit.no7
-#define pinDIO8 P1_bit.no0
-#define pinDIO9 P14_bit.no7
-#define pinDIO10 P2_bit.no6
-#define pinDIO11 P1_bit.no3
-#define pinDIO12 P1_bit.no4
-#define pinDIO13 P1_bit.no5
-#define pinDIO14 P12_bit.no1
-#define pinDIO15 P6_bit.no2
-
 #define HIGH 1
 #define LOW 0
 
+#define NSSpin
+#define pinPowerLock
+#define pinNetworkMode
+
+#define pinDI0
+#define pinDI1
+#define pinDI2
+#define pinDI3
+#define pinDI4
+
+#define pinDO0
+#define pinDO1
+#define pinDO2
+#define pinDO3
+#define pinDO4
+
+#define GpioWrite(pin, value)
+#define GpioSet(pin)
+#define GpioClear(pin)
+#define GpioRead(pin)			(0)
+
 #endif
-/*!
- * @}
- */

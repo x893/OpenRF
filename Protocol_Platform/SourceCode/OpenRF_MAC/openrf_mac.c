@@ -1,23 +1,3 @@
-/*************************************************************************************
-**																					**
-**	openrf_mac.c			OpenRF(tm) MAC Layer   									**
-** 																					**
-**************************************************************************************
-**																					**
-** Written By:	Steve Montgomery													**
-**				Digital Six Laboratories LLC										**
-** (c)2012 Digital Six Labs, All rights reserved									**
-**																					**
-**************************************************************************************/
-//
-// Revision History
-//
-// Revision		Date	Revisor		Description
-// ===================================================================================
-// ===================================================================================
-
-//#define RADIO_SI1000
-//#define RADIO_SX1231
 #include "openrf_mac.h"
 #include <stdlib.h>
 
@@ -27,6 +7,7 @@ enum
 	kSyncTimer,
 	kLockTimer
 } timerDefs;
+
 // ***********************************************************************************
 // ** Private variables
 // ***********************************************************************************
@@ -63,12 +44,12 @@ extern UU32 _RTCDateTimeInSecs;
 // ***********************************************************************************
 // ** Event Handlers 
 // ***********************************************************************************
-extern void NotifyRadioPacketReceived(tPacketTypes packetType, U8 length, U8 *SDU)
+void NotifyRadioPacketReceived(tPacketTypes packetType, U8 length, U8 *SDU)
 {
+	/*
 	UU32 sourceMACAddress, destMACAddress;
 	UU32 timeStamp;
 
-	/*
 	if(packetType == kSyncPacketType)
 	{
 		// if we receive a sync packet, we know it is from our master because it passed the sync word and CRC match. Therefore, we consider ourselves locked now.
@@ -199,7 +180,7 @@ U16 lockTime;
 void OpenRFSendPacket(UU32 destAddress, tPacketTypes packetType, U8 length, U8 *txBuffer, U16 preambleCount)
 {
 	// send the packet and do not block until complete.
-	RadioSendPacket(destAddress, packetType, length, txBuffer,(UU16) preambleCount, 0);
+	RadioSendPacket(destAddress, packetType, length, txBuffer, preambleCount, 0);
 }
 
 void OpenRFInitialize(tOpenRFInitializer ini)
@@ -239,8 +220,8 @@ void OpenRFListenForPacket(tListenModes mode, U16 period)
 }
 tOpenRFStates OpenRFLoop()
 {
-	U16 i;
 	U8 oState = RadioGetRFICMode();
+
 	// Update our MACState based on the current radio state
 	switch(oState)
 	{

@@ -26,7 +26,7 @@ typedef signed char		S8;
 typedef signed int		S16;
 typedef signed long		S32;
 
-typedef union UU16
+typedef union
 {
 	U16 U16;
 	S16 S16;
@@ -34,7 +34,7 @@ typedef union UU16
 	S8 S8[2];
 } UU16;
 
-typedef union UU32
+typedef union
 {
 	U32 U32;
 	S32 S32;
